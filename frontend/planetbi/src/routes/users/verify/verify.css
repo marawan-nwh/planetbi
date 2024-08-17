@@ -1,0 +1,84 @@
+body {
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  padding-top: 0;
+  background: #fff;
+}
+
+.logo img {
+  width: 30px;
+  border-radius: 6px;
+}
+
+.verification-wrapper {
+  margin: 45px auto 45px;
+  text-align: left;
+  width: 425px;
+  position: relative;
+  background: #fff;
+  border-radius: 13px;
+  padding: 30px 35px;
+}
+
+.verification-wrapper img {
+  margin-bottom: 25px;
+}
+
+.verification-wrapper .verified-already {
+}
+
+.verification-wrapper .verified-already .already-verified-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.verification-wrapper .verified-already .already-verified-button {
+  margin-top: 10px;
+}
+
+.verification-wrapper .verification-error {
+}
+
+.verification-wrapper .verification-error .verification-error-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.verification-wrapper .verification-error .verification-error-text {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.verification-wrapper .verification {
+}
+
+.verification-wrapper .verification .userid {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.verification-wrapper .verification #userid {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.verification-wrapper .verification button {
+  margin-top: 7px;
+}
+
+.verification-wrapper .verification-sucess {
+}
+
+.verification-wrapper .verification-sucess .verification-sucess-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.verification-sucess-button {
+  margin-top: 10px;
+}
+
+.verification-error-button {
+  margin-top: 10px;
+}

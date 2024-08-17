@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  scrollbar-width: none !important;
+  outline: none !important;
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #111;
+  margin: 0;
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+}
