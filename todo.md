@@ -1,6 +1,7 @@
 ## Tasks
 
 - Authentication handlers and pages
+- In the signin page, provide a way to resend the verification email
 - Change AWS configs to a new account's configs
 - Homepage
 - Create view and viewlist

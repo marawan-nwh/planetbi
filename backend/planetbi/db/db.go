@@ -16,10 +16,13 @@ var ErrNoRows = pgx.ErrNoRows
 func Init() {
 	database := "planetbi"
 	user := "marawan"
+	// locally, posgresql setup sometimes saves the password somewhere and uses that for the connection,
+	// so even if this is wrong, it will still work
 	pass := "marawan"
 	host := "localhost"
 
-	dbURI := fmt.Sprintf("postgres://%s:%s@%s:5432/%s", user, pass, host, database)
+	// dbURI := fmt.Sprintf("postgres://%s:%s@%s:5432/%s", user, pass, host, database)
+	dbURI := fmt.Sprintf("user=%s password=%s host=%s port=5432 dbname=%s", user, pass, host, database)
 	config, err := pgxpool.ParseConfig(dbURI)
 	if err != nil {
 		panic(err)

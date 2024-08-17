@@ -65,7 +65,7 @@ input::placeholder {
 
 input:focus {
   border-color: rgb(37 127 191);
-  box-shadow: rgb(213 240 255) 0px 0px 0px 4px;
+  box-shadow: rgb(37 127 191) 0px 0px 0px 1px;
 }
 
 .account {

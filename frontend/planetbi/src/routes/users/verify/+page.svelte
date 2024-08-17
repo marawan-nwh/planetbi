@@ -1,15 +1,9 @@
 <script>
   import { title } from "$lib/stores.js";
   title.set("Email Verification");
-
-  import PlanetBIDarkSVG from "$lib/assets/planetbi-dark.svg";
 </script>
 
 <div class="verification-wrapper">
-  <a href="/" style="text-decoration: none;" class="logo">
-    <img src={PlanetBIDarkSVG} alt="PlanetBI" />
-  </a>
-
   <div class="verified-already hide">
     <div class="already-verified-title">Email already verified</div>
     <div class="already-verified-button">
