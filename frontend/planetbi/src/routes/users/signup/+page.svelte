@@ -145,56 +145,73 @@
   <p>Please check your email to verify your account.</p>
 </div>
 
-<div class="form-wrapper {success ? 'hide' : ''}">
+<div class="header">
   <a href="/" style="text-decoration: none;" class="logo">
     <img src={PlanetBIDarkSVG} alt="PlanetBI" />
   </a>
 
-  <div class="title">PlanetBI / Sign Up</div>
-  <div class="subtitle">Sign up with email and password</div>
+  <div>Planet<span>.bi</span></div>
+</div>
+
+<div class="form-wrapper {success ? 'hide' : ''}">
+  <div class="title">Sign up</div>
+  <a class="ihaveanaccount" href="/users/signin">I have an account</a>
 
   <div class="form">
-    <input
-      type="name"
-      placeholder="Name"
-      on:keydown={submitOnEnter}
-      bind:value={name}
-      {disabled}
-    />
-    <input
-      type="email"
-      placeholder="Email"
-      on:keydown={submitOnEnter}
-      bind:value={email}
-      {disabled}
-    />
-    <input
-      type="password"
-      placeholder="Password"
-      on:keydown={submitOnEnter}
-      bind:value={password}
-      {disabled}
-    />
-    <input
-      type="password"
-      placeholder="Confirm password"
-      on:keydown={submitOnEnter}
-      bind:value={confirmPassword}
-      {disabled}
-    />
+    <div class="input-wrapper">
+      <input
+        type="name"
+        class={hasValue(name) ? "has-value" : ""}
+        on:keydown={submitOnEnter}
+        bind:value={name}
+        {disabled}
+      />
+      <span class="placeholder">Name</span>
+    </div>
+    <div class="input-wrapper">
+      <input
+        type="email"
+        class={hasValue(email) ? "has-value" : ""}
+        on:keydown={submitOnEnter}
+        bind:value={email}
+        {disabled}
+      />
+      <span class="placeholder">Email</span>
+    </div>
+    <div class="input-wrapper">
+      <input
+        type="password"
+        class={hasValue(password) ? "has-value" : ""}
+        on:keydown={submitOnEnter}
+        bind:value={password}
+        {disabled}
+      />
+      <span class="placeholder">Password</span>
+    </div>
+    <div class="input-wrapper">
+      <input
+        type="password"
+        class={hasValue(confirmPassword) ? "has-value" : ""}
+        on:keydown={submitOnEnter}
+        bind:value={confirmPassword}
+        {disabled}
+      />
+      <span class="placeholder">Confirm password</span>
+    </div>
+
+    <div class="agreetoterms">
+      By signing up, you agree to the <a href="/">Terms and Conditions</a>.
+    </div>
+
     <button
-      class="btn-blue ld-over {running ? 'running' : ''}"
+      class="signup btn-blue ld-over {running ? 'running' : ''}"
       id="signup"
       on:click={signup}
       {disabled}
     >
       <div class="ld ld-ring ld-cycle"></div>
-      Sign up
+      Agree and Sign up
     </button>
-
-    <div class="account">
-      Already have an account? <a href="/signin">Sign in</a>
-    </div>
 
     <div class="error {!error ? 'hide' : ''}">
       <span>{error}</span>

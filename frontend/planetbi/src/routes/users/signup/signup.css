@@ -1,36 +1,77 @@
-.header {
-  display: none;
+body {
+  background: #f6fafe;
 }
 
-.logo img {
-  width: 30px;
-  border-radius: 6px;
+.header {
+  padding: 17px 20px;
+  background: #fff;
+}
+
+.header .logo a {
+  display: inline-block;
+}
+
+.header .logo img {
+  width: 31px;
+  display: inline-block;
+}
+
+.header div {
+  display: inline-block;
+  position: absolute;
+  top: 24px;
+  left: 59px;
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+}
+
+.header span {
+  text-transform: lowercase;
+  font-weight: 500;
+  display: inline-block;
+  margin-left: -2px;
+  font-size: 12px;
+  letter-spacing: 0;
+  font-family: "Inter", sans-serif;
+  color: #444;
 }
 
 .form-wrapper {
-  margin: 65px auto 45px;
-  text-align: center;
-  width: 425px;
+  margin: 44px auto 45px;
+  width: 450px;
   position: relative;
   background: #fff;
-  border-radius: 10px;
-  padding: 35px 35px 6px;
+  border-radius: 8px;
+  padding: 25px 32px 9px;
+  box-shadow: 0 12px 48px rgb(26 39 52 / 11%);
 }
 
 .title {
-  font-weight: 400;
   margin-top: 9px;
-  margin-bottom: 3px;
-  font-size: 14px;
-  color: #333;
-  font-weight: 800;
+  margin-bottom: 27px;
+  font-size: 22px;
+  color: #111;
+  word-spacing: -1px;
+  font-weight: 600;
 }
 
-.subtitle {
-  font-weight: 400;
-  font-size: 13px;
-  margin-bottom: 19px;
-  color: #49474a;
+.ihaveanaccount {
+  position: absolute;
+  top: 38px;
+  right: 37px;
+  font-size: 14px;
+  border-bottom: 1.4px solid;
+  padding-bottom: 2px;
+  word-spacing: -1px;
+  color: #0e71c3;
+  text-decoration: none;
+}
+
+.ihaveanaccount:hover {
+  border-bottom: 2px solid;
 }
 
 .form {
@@ -47,44 +88,55 @@
   font-size: 14px;
 }
 
+.input-wrapper {
+  position: relative;
+}
+
 input {
-  width: 100%;
-  border: 1px solid #a4a4a4;
+  width: calc(100% - 2.4px);
+  border: none;
   margin-bottom: 8px;
-  padding: 11px 17px;
+  padding: 14px 10px 0;
   height: 46px;
-  border-radius: 5px;
-  font-size: 14px;
+  border-radius: 3px;
+  font-size: 15px;
   transition: box-shadow 0.1s ease, border-color 0.25s ease;
+  box-shadow: #676e74 0px 0px 0px 0.6px;
 }
 
-input::placeholder {
-  color: #525354 !important;
-  opacity: 1;
+input:focus ~ .placeholder,
+input:not(:focus).has-value ~ .placeholder {
+  top: 6px;
+  left: 10px;
+  font-size: 11px;
 }
 
-input:focus {
-  border-color: rgb(37 127 191);
-  box-shadow: rgb(37 127 191) 0px 0px 0px 1px;
+.placeholder {
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  top: 15px;
+  color: #4a5159;
+  font-size: 13.5px;
+  transition: 0.2s ease all;
 }
 
-.account {
-  text-align: left;
+.form button.signup {
+  border-radius: 4px !important;
+}
+
+.agreetoterms {
+  text-align: center;
   font-size: 12px;
-  margin: 6px 0 10px;
-  color: #505050;
+  margin: 9px 0 11px;
+  color: #646d75;
 }
 
-.account a {
-  color: #303030;
+.agreetoterms a {
+  color: #646d75;
+  border-bottom: 1px solid;
+  padding-bottom: 1px;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.account a:hover {
-  color: #111;
-  text-decoration: underline;
 }
 
 .error {
@@ -99,7 +151,7 @@ input:focus {
   width: 100%;
   line-height: 1.3;
   min-height: 42px;
-  margin-bottom: 13px;
+  margin: 10px 0 4px;
 }
 
 .error button {

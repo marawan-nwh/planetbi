@@ -5,6 +5,7 @@
 - Change AWS configs to a new account's configs
 - Homepage
 - Create view and viewlist
+- Add terms and conditions
 
 ## Reading
 
