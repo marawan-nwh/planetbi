@@ -200,7 +200,9 @@
     </div>
 
     <div class="agreetoterms">
-      By signing up, you agree to the <a href="/">Terms and Conditions</a>.
+      By signing up, you agree to the <a href="/terms-and-conditions"
+        >Terms and Conditions</a
+      >.
     </div>
 
     <button

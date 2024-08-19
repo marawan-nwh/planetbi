@@ -5,7 +5,7 @@
 - Change AWS configs to a new account's configs
 - Homepage
 - Create view and viewlist
-- Add terms and conditions
+- Add terms and conditions, and check the link in the signup page
 
 ## Reading
 

@@ -19,22 +19,21 @@ body {
 .header div {
   display: inline-block;
   position: absolute;
-  top: 24px;
-  left: 59px;
+  top: 24.5px;
+  left: 58px;
   font-size: 16.5px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  color: #222;
   text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 .header span {
   text-transform: lowercase;
   font-weight: 500;
   display: inline-block;
-  margin-left: -2px;
+  margin-left: -1px;
   font-size: 12px;
-  letter-spacing: 0;
   font-family: "Inter", sans-serif;
   color: #555;
 }
