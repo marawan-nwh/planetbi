@@ -150,7 +150,7 @@
     <img src={PlanetBIDarkSVG} alt="PlanetBI" />
   </a>
 
-  <div>Planet<span>.bi</span></div>
+  <div>Planet<span>BI</span></div>
 </div>
 
 <div class="form-wrapper {success ? 'hide' : ''}">
