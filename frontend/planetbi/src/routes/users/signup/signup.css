@@ -52,10 +52,10 @@ body {
   font-size: 22px;
   color: #111;
   word-spacing: -1px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.ihaveanaccount {
+.i-have-an-account {
   position: absolute;
   top: 38px;
   right: 37px;
@@ -67,7 +67,7 @@ body {
   text-decoration: none;
 }
 
-.ihaveanaccount:hover {
+.i-have-an-account:hover {
   border-bottom: 2px solid;
 }
 
@@ -89,11 +89,25 @@ body {
   position: relative;
 }
 
-input {
+.input-wrapper svg {
+  position: absolute;
+  right: 11px;
+  top: 18px;
+  width: 16px;
+  height: 11px;
+}
+
+.input-wrapper svg path {
+  fill: #646d75;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   width: calc(100% - 2.4px);
   border: none;
   margin-bottom: 8px;
-  padding: 14px 13px 0;
+  padding: 14px 34px 0 12px;
   height: 46px;
   border-radius: 3px;
   font-size: 15px;
@@ -103,18 +117,23 @@ input {
 
 input:focus ~ .placeholder,
 input:not(:focus).has-value ~ .placeholder {
-  top: 6px;
-  left: 13px;
+  top: 7px;
+  left: 12px;
   font-size: 11px;
+}
+
+/* https://learn.microsoft.com/en-us/microsoft-edge/web-platform/password-reveal */
+::-ms-reveal {
+  display: none;
 }
 
 .placeholder {
   position: absolute;
   pointer-events: none;
-  left: 13px;
+  left: 12px;
   top: 15px;
-  color: #4a5159;
-  font-size: 13.5px;
+  color: #4d5764;
+  font-size: 14px;
   transition: 0.2s ease all;
 }
 
@@ -122,14 +141,14 @@ input:not(:focus).has-value ~ .placeholder {
   border-radius: 4px !important;
 }
 
-.agreetoterms {
+.agree-to-terms {
   text-align: center;
   font-size: 12px;
   margin: 9px 0 11px;
   color: #646d75;
 }
 
-.agreetoterms a {
+.agree-to-terms a {
   color: #646d75;
   border-bottom: 1px solid;
   padding-bottom: 1px;
