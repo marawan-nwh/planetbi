@@ -103,7 +103,7 @@
 
         disabled = false;
         running = false;
-      }
+      },
     );
   }
 </script>
