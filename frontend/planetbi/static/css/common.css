@@ -115,6 +115,12 @@ button {
   height: 30.63px;
 }
 
+.running {
+  opacity: 0.8 !important;
+  cursor: not-allowed;
+  color: #ffffff30 !important;
+}
+
 .btn-primary:disabled {
   opacity: 0.7;
 }
@@ -178,14 +184,9 @@ button {
   color: #fff !important;
 }
 
-.btn-blue.running:hover {
-  background: #0e74cf !important;
-  border: 0.8px solid #0e74cf !important;
-}
-
 .btn-blue.disabled,
 .btn-blue:disabled {
-  opacity: 0.6 !important;
+  opacity: 0.7 !important;
   cursor: not-allowed;
   color: #eff7ffe8 !important;
 }
@@ -195,6 +196,18 @@ button {
   background: #0e74cf !important;
   border: 0.8px solid #0e74cf !important;
   cursor: not-allowed;
+}
+
+.btn-blue.running {
+  opacity: 0.7 !important;
+  cursor: not-allowed;
+  color: #ffffff30 !important;
+}
+
+.btn-blue.running:hover {
+  background: #0e74cf !important;
+  border: 0.8px solid #0e74cf !important;
+  color: #ffffff30 !important;
 }
 
 .btn-blue.ld-over:before {

@@ -25,3 +25,8 @@ body {
     background: transparent;
   }
 }
+
+::selection,
+::-moz-selection {
+  background: #afd5fe;
+}

@@ -5,7 +5,8 @@
   - Sign in
   - Forgot password
   - Reset password
-- In the signin page, provide a way to resend the verification email
+- Email sending needs more testing
+- In the signin page, and in the verification page, provide a way to resend the verification email
 - Change AWS configs to a new account's configs
 - Homepage
 - Create view and viewlist

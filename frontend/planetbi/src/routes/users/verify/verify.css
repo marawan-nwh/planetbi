@@ -3,82 +3,132 @@ body {
   overflow: hidden;
   margin-top: 0;
   padding-top: 0;
-  background: #fff;
+  background: #f6fafe;
 }
 
-.logo img {
-  width: 30px;
-  border-radius: 6px;
+.header {
+  padding: 17px 20px;
+  background: #fff;
+
+  .logo {
+    a {
+      display: inline-block;
+    }
+
+    img {
+      width: 31px;
+      display: inline-block;
+    }
+  }
+
+  div {
+    display: inline-block;
+    position: absolute;
+    top: 21px;
+    left: 58px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #222;
+    font-family: "Manrope", sans-serif;
+  }
+
+  span {
+    font-weight: 300;
+    display: inline-block;
+    font-size: 20px;
+    letter-spacing: -1px;
+    margin-left: 1px;
+    font-family: "DM Mono", monospace;
+  }
 }
 
 .verification-wrapper {
-  margin: 45px auto 45px;
-  text-align: left;
-  width: 425px;
+  margin: 44px auto 45px;
+  width: 450px;
   position: relative;
   background: #fff;
-  border-radius: 13px;
-  padding: 30px 35px;
+  border-radius: 8px;
+  padding: 25px 32px 26px;
+  box-shadow: 0 12px 48px rgb(26 39 52 / 11%);
+
+  .verification {
+    .title {
+      margin-top: 9px;
+      margin-bottom: 21px;
+      font-size: 22px;
+      color: #111;
+      word-spacing: -1px;
+      font-weight: 500;
+    }
+
+    button {
+      width: 100%;
+      margin-bottom: 5px;
+      padding: 5px 0;
+      height: 47px;
+      font-size: 14px;
+    }
+  }
 }
 
-.verification-wrapper img {
-  margin-bottom: 25px;
+.sucess,
+.error {
+  text-align: center;
+  margin: 70px 0;
+
+  h1 {
+    margin: 5px 0 0;
+    color: #000;
+    font-weight: 600;
+    font-size: 30px;
+  }
+
+  p {
+    font-size: 20px;
+    margin: 14px 0;
+  }
+
+  a {
+    color: #0e71c3;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #0f60a3;
+    text-decoration: underline;
+  }
 }
 
-.verification-wrapper .verified-already {
+.sucess {
+  svg {
+    fill: #4487e2;
+  }
 }
 
-.verification-wrapper .verified-already .already-verified-title {
-  font-size: 14px;
-  font-weight: 800;
+.error {
+  svg {
+    fill: #d84c4c;
+  }
+
+  h1 {
+    margin: 10px 0 0;
+  }
+
+  p {
+    margin: 7px 0;
+  }
 }
 
-.verification-wrapper .verified-already .already-verified-button {
-  margin-top: 10px;
-}
+.agree-to-terms {
+  text-align: center;
+  font-size: 12px;
+  margin: 9px 0 11px;
+  color: #646d75;
 
-.verification-wrapper .verification-error {
-}
-
-.verification-wrapper .verification-error .verification-error-title {
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.verification-wrapper .verification-error .verification-error-text {
-  font-size: 14px;
-  margin-top: 4px;
-}
-
-.verification-wrapper .verification {
-}
-
-.verification-wrapper .verification .userid {
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.verification-wrapper .verification #userid {
-  font-size: 14px;
-  margin-top: 4px;
-}
-
-.verification-wrapper .verification button {
-  margin-top: 7px;
-}
-
-.verification-wrapper .verification-sucess {
-}
-
-.verification-wrapper .verification-sucess .verification-sucess-title {
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.verification-sucess-button {
-  margin-top: 10px;
-}
-
-.verification-error-button {
-  margin-top: 10px;
+  a {
+    color: #646d75;
+    border-bottom: 1px solid;
+    padding-bottom: 1px;
+    text-decoration: none;
+  }
 }

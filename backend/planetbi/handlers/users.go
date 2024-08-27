@@ -95,4 +95,45 @@ Thanks,<br/>
 				return
 			}
 		}},
+	{
+		URI:    "/verify",
+		Method: "POST",
+		Params: "user_id,token",
+		Do: func(w http.ResponseWriter, r *http.Request) {
+			ctx := r.Context()
+			userID := r.FormValue("user_id")
+			token := r.FormValue("token")
+
+			// check if user already verified
+			var verified bool
+			err := db.Pool.QueryRow(ctx, "SELECT email_verified FROM users WHERE id = $1", userID).Scan(&verified)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+			if verified {
+				http.Error(w, "", http.StatusOK)
+				return
+			}
+
+			var verifiedToken string
+			err = db.Pool.QueryRow(ctx, "SELECT email_verification_token FROM users WHERE id = $1", userID).Scan(&verifiedToken)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+			if verifiedToken != token {
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
+
+			_, err = db.Pool.Exec(ctx, "UPDATE users SET email_verified = true, email_verification_token = null WHERE id = $1", userID)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+		}},
 }
