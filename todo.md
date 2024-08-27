@@ -1,7 +1,10 @@
 ## Tasks
 
-- Signup page: Show password, errors, success message
 - Authentication handlers and pages
+  - Verfiy email
+  - Sign in
+  - Forgot password
+  - Reset password
 - In the signin page, provide a way to resend the verification email
 - Change AWS configs to a new account's configs
 - Homepage
