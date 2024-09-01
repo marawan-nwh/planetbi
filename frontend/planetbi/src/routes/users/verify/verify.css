@@ -3,11 +3,11 @@ body {
   overflow: hidden;
   margin-top: 0;
   padding-top: 0;
-  background: #f6fafe;
+  background: #f3f4f869;
 }
 
 .header {
-  padding: 17px 20px;
+  padding: 19px 20px;
   background: #fff;
 
   .logo {
@@ -16,29 +16,44 @@ body {
     }
 
     img {
-      width: 31px;
+      width: 27px;
       display: inline-block;
+    }
+
+    svg {
+      width: 29px;
+      fill: none;
+      transform: rotate(21deg);
+      stroke: #222;
+      stroke-width: 1.1px;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
     }
   }
 
-  div {
+  .title {
     display: inline-block;
     position: absolute;
     top: 21px;
-    left: 58px;
-    font-size: 20px;
-    font-weight: 700;
+    left: 52px;
+    font-size: 19px;
+    font-weight: 600;
     color: #222;
     font-family: "Manrope", sans-serif;
-  }
+    display: none;
 
-  span {
-    font-weight: 300;
-    display: inline-block;
-    font-size: 20px;
-    letter-spacing: -1px;
-    margin-left: 1px;
-    font-family: "DM Mono", monospace;
+    .p {
+      font-family: "DM Mono", monospace;
+      font-size: 20px;
+    }
+
+    .bi {
+      font-weight: 300;
+      display: inline-block;
+      letter-spacing: -1px;
+      margin-left: 1px;
+      font-family: "DM Mono", monospace;
+    }
   }
 }
 
@@ -130,5 +145,9 @@ body {
     border-bottom: 1px solid;
     padding-bottom: 1px;
     text-decoration: none;
+
+    &:hover {
+      color: #4b5259;
+    }
   }
 }

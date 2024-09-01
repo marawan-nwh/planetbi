@@ -12,6 +12,8 @@ import (
 
 	"github.com/rs/xid"
 	"golang.org/x/crypto/bcrypt"
+
+	"time"
 )
 
 var Users = []handler{
@@ -51,7 +53,30 @@ var Users = []handler{
 				return
 			}
 			if exists {
-				http.Error(w, "", http.StatusConflict)
+				// get userID
+				var userID string
+				err := db.Pool.QueryRow(ctx, "SELECT id FROM users WHERE email = $1", email).Scan(&userID)
+				if err != nil {
+					slog.Error(err.Error())
+					http.Error(w, "", http.StatusInternalServerError)
+					return
+				}
+
+				// send email to user
+				err = emails.Send(email, "Did you sign up for "+config.AppName+"?", `
+Hello `+strings.Split(name, " ")[0]+`,<br/><br/>
+
+It looks like you have tried to sign up for `+config.AppName+` with this email address, but you are already registered.<br/><br/>
+
+If you didn’t request to sign up, you can ignore this email.<br/><br/>
+
+Thanks,<br/>
+`+config.AppName+` Team`)
+				if err != nil {
+					slog.Error(err.Error())
+					http.Error(w, "", http.StatusInternalServerError)
+					return
+				}
 				return
 			}
 
@@ -135,5 +160,72 @@ Thanks,<br/>
 				http.Error(w, "", http.StatusInternalServerError)
 				return
 			}
+		}},
+
+	{
+		URI:    "/signin",
+		Method: "POST",
+		Params: "email,password",
+		Do: func(w http.ResponseWriter, r *http.Request) {
+			ctx := r.Context()
+
+			email := r.FormValue("email")
+			password := r.FormValue("password")
+
+			var userID string
+			var name string
+			var verified bool
+			var encryptedPassword string
+			err := db.Pool.QueryRow(ctx, "SELECT id, name, email_verified, password FROM users WHERE email = $1", email).Scan(&userID, &name, &verified, &encryptedPassword)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			if !verified {
+				http.Error(w, "", http.StatusForbidden)
+				return
+			}
+
+			// compare password with bcrypt
+			err = bcrypt.CompareHashAndPassword([]byte(encryptedPassword), []byte(password))
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
+
+			session, err := CookieStore.Get(r, "session")
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+			session.ID = xid.New().String()
+			session.Values["user_id"] = userID
+			session.Values["name"] = name
+			session.Values["authenticated"] = true
+			session.Options.MaxAge = 86400 * 30 // 30 days
+			session.Options.SameSite = http.SameSiteLaxMode
+			session.Options.HttpOnly = true
+
+			err = session.Save(r, w)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			// update recent_login_at
+			// don't return error if failed
+			_, err = db.Pool.Exec(ctx, "UPDATE users SET recent_login_at = $1 WHERE id = $2", time.Now(), userID)
+			if err != nil {
+				slog.Error(err.Error())
+			}
+
+			JSON(w, &struct {
+				Name string `json:"name"`
+			}{Name: name})
 		}},
 }

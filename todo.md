@@ -1,12 +1,16 @@
 ## Tasks
 
 - Authentication handlers and pages
+  - The header could be its own component
+  - Consistent CSS classes and shared CSS would be nice
+  - PlanetBI in the header as a link
   - Sign in
   - Forgot password
   - Reset password
-- Email sending needs more testing
+- Email sending needs more testing (could this be because it is in sandbox now?)
 - In the signin page (if not verified), and in the verification page, provide a way to resend the verification email
-- Change AWS configs to a new account's configs
+  email_verification_token_expiry
+  email_verification_token_updated_at
 - Homepage
 - Account page (view, edit, delete account)
 - Create view and viewlist
