@@ -26,7 +26,6 @@ body {
   }
 }
 
-::selection,
-::-moz-selection {
-  background: #afd5fe;
+::selection {
+  background-color: #afd5fe;
 }

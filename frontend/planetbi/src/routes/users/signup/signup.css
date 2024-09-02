@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #f3f4f869;
+  background: #f6fafe;
 }
 
 .header {
@@ -17,13 +17,8 @@ body {
       display: inline-block;
     }
 
-    img {
-      width: 27px;
-      display: inline-block;
-    }
-
     svg {
-      width: 29px;
+      width: 31px;
       fill: none;
       transform: rotate(21deg);
       stroke: #222;
@@ -85,7 +80,7 @@ body {
   background: #fff;
   border-radius: 8px;
   padding: 25px 32px 9px;
-  box-shadow: 0 12px 48px rgb(35 35 35 / 11%);
+  box-shadow: 0 12px 48px rgb(26 39 52 / 11%);
 
   .title {
     margin-top: 9px;
@@ -157,7 +152,7 @@ body {
         border-radius: 3px;
         font-size: 15px;
         transition: box-shadow 0.1s ease, border-color 0.25s ease;
-        box-shadow: #676e74 0px 0px 0px 0.6px;
+        box-shadow: #767e85 0px 0px 0px 0.6px;
       }
 
       input:focus ~ .placeholder,
@@ -172,7 +167,7 @@ body {
         pointer-events: none;
         left: 12px;
         top: 15px;
-        color: #53575c;
+        color: #484e56;
         font-size: 14px;
         transition: 0.2s ease all;
       }
@@ -182,16 +177,17 @@ body {
       text-align: center;
       font-size: 12px;
       margin: 9px 0 11px;
-      color: #646d75;
+      color: #586169;
 
       a {
-        color: #646d75;
-        border-bottom: 1px solid;
+        color: #586169;
+        border-bottom: 1px solid #a1abb4;
         padding-bottom: 1px;
         text-decoration: none;
 
         &:hover {
           color: #4b5259;
+          border-bottom: 1px solid #818a93;
         }
       }
     }

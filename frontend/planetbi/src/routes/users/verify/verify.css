@@ -3,7 +3,7 @@ body {
   overflow: hidden;
   margin-top: 0;
   padding-top: 0;
-  background: #f3f4f869;
+  background: #f6fafe;
 }
 
 .header {
@@ -15,13 +15,8 @@ body {
       display: inline-block;
     }
 
-    img {
-      width: 27px;
-      display: inline-block;
-    }
-
     svg {
-      width: 29px;
+      width: 31px;
       fill: none;
       transform: rotate(21deg);
       stroke: #222;
@@ -138,16 +133,17 @@ body {
   text-align: center;
   font-size: 12px;
   margin: 9px 0 11px;
-  color: #646d75;
+  color: #52606c;
 
   a {
     color: #646d75;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #a1abb4;
     padding-bottom: 1px;
     text-decoration: none;
 
     &:hover {
       color: #4b5259;
+      border-bottom: 1px solid #818a93;
     }
   }
 }
