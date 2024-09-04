@@ -63,10 +63,15 @@ var Users = []handler{
 				}
 
 				// send email to user
+				base := "http://localhost:" + config.ClientPort
+				if isProduction() {
+					base = "https://" + config.Domain
+				}
+
 				err = emails.Send(email, "Did you sign up for "+config.AppName+"?", `
 Hello `+strings.Split(name, " ")[0]+`,<br/><br/>
 
-It looks like you have tried to sign up for `+config.AppName+` with this email address, but you are already registered.<br/><br/>
+It looks like you have tried to sign up for `+config.AppName+` with this email address, but you are already registered. Use your email and password to <a target="_blank" href="`+base+`/users/signin">sign in</a>, or follow the steps <a target="_blank" href="`+base+`/users/forgot-password">here</a> if you forgot your password.<br/><br/>
 
 If you didn’t request to sign up, you can ignore this email.<br/><br/>
 

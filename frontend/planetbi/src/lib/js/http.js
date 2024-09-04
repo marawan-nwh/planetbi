@@ -1,4 +1,4 @@
-import { hasValue } from "$lib/common.js";
+import { hasValue } from "$lib/js/common.js";
 
 let BaseURI = "https://planetbi.com";
 

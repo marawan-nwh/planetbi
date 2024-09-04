@@ -1,10 +1,7 @@
 ## Tasks
 
 - Authentication handlers and pages
-  - The header could be its own component
   - Consistent CSS classes and shared CSS would be nice
-  - PlanetBI in the header as a link
-  - Sign in
   - Forgot password
   - Reset password
 - Email sending needs more testing (could this be because it is in sandbox now?)

@@ -8,52 +8,6 @@ body {
   background: #f6fafe;
 }
 
-.header {
-  padding: 19px 20px;
-  background: #fff;
-
-  .logo {
-    a {
-      display: inline-block;
-    }
-
-    svg {
-      width: 31px;
-      fill: none;
-      transform: rotate(21deg);
-      stroke: #222;
-      stroke-width: 1.1px;
-      stroke-linecap: round;
-      stroke-linejoin: miter;
-    }
-  }
-
-  .title {
-    display: inline-block;
-    position: absolute;
-    top: 21px;
-    left: 52px;
-    font-size: 19px;
-    font-weight: 600;
-    color: #222;
-    font-family: "Manrope", sans-serif;
-    display: none;
-
-    .p {
-      font-family: "DM Mono", monospace;
-      font-size: 20px;
-    }
-
-    .bi {
-      font-weight: 300;
-      display: inline-block;
-      letter-spacing: -1px;
-      margin-left: 1px;
-      font-family: "DM Mono", monospace;
-    }
-  }
-}
-
 .account-created {
   text-align: center;
   margin: 70px 0;

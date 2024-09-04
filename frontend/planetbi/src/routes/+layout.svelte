@@ -1,5 +1,5 @@
 <script>
-  import { title } from "$lib/stores.js";
+  import { title } from "$lib/js/stores.js";
 
   let _title = "";
   title.subscribe((val) => {

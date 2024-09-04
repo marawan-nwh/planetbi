@@ -201,13 +201,13 @@ button {
 .btn-blue.running {
   opacity: 0.7 !important;
   cursor: not-allowed;
-  color: #ffffff30 !important;
+  color: #ffffff00 !important;
 }
 
 .btn-blue.running:hover {
   background: #0e74cf !important;
   border: 0.8px solid #0e74cf !important;
-  color: #ffffff30 !important;
+  color: #ffffff00 !important;
 }
 
 .btn-blue.ld-over:before {
