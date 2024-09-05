@@ -4,15 +4,23 @@ import (
 	"net/http"
 	"os"
 
-	gorillaHandlers "github.com/gorilla/handlers"
-	"github.com/gorilla/mux"
+	"log/slog"
 	"planetbi/config"
 	"planetbi/db"
 	"planetbi/handlers"
+
+	gorillaHandlers "github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
+	"gitlab.com/greyxor/slogor"
 )
 
 func main() {
 	println("Starting...")
+
+	slog.SetDefault(slog.New(slogor.NewHandler(os.Stderr, slogor.Options{
+		ShowSource: true,
+	})))
+
 	db.Init()
 
 	router := mux.NewRouter()

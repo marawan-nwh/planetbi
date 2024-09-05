@@ -10,6 +10,7 @@ import (
 	"planetbi/emails"
 	"strings"
 
+	"database/sql"
 	"github.com/rs/xid"
 	"golang.org/x/crypto/bcrypt"
 
@@ -68,6 +69,7 @@ var Users = []handler{
 					base = "https://" + config.Domain
 				}
 
+				// TODO: remove the forgot-password link
 				err = emails.Send(email, "Did you sign up for "+config.AppName+"?", `
 Hello `+strings.Split(name, " ")[0]+`,<br/><br/>
 
@@ -96,8 +98,9 @@ Thanks,<br/>
 
 			// create user
 			userID := xid.New().String()
-			verificationToekn := random(32)
-			_, err = db.Pool.Exec(ctx, `INSERT INTO users (id, name, email, password, email_verification_token) VALUES ($1, $2, $3, $4, $5)`, userID, name, email, encryptedPassword, verificationToekn)
+			verificationToken := random(32)
+			verificationTokenExpiry := time.Now().Add(time.Minute * 5)
+			_, err = db.Pool.Exec(ctx, `INSERT INTO users (id, name, email, password, email_verification_token, email_verification_token_expiry) VALUES ($1, $2, $3, $4, $5, $6)`, userID, name, email, encryptedPassword, verificationToken, verificationTokenExpiry)
 			if err != nil {
 				slog.Error(err.Error())
 				http.Error(w, "", http.StatusInternalServerError)
@@ -113,7 +116,7 @@ Thanks,<br/>
 Hello `+strings.Split(name, " ")[0]+`,<br/><br/>
 
 Follow this link to verify your email address:
-<a target="_blank" href="`+base+`/users/verify?user_id=`+userID+`&token=`+verificationToekn+`">Verify</a><br/><br/>
+<a target="_blank" href="`+base+`/users/verify?user_id=`+userID+`&token=`+verificationToken+`">Verify</a><br/><br/>
 
 If you didn’t ask to verify this address, you can ignore this email.<br/><br/>
 
@@ -147,26 +150,30 @@ Thanks,<br/>
 				return
 			}
 
-			var verifiedToken string
-			err = db.Pool.QueryRow(ctx, "SELECT email_verification_token FROM users WHERE id = $1", userID).Scan(&verifiedToken)
+			var verificationToken string
+			var verificationTokenExpiry sql.NullTime
+			err = db.Pool.QueryRow(ctx, "SELECT email_verification_token, email_verification_token_expiry FROM users WHERE id = $1", userID).Scan(&verificationToken, &verificationTokenExpiry)
 			if err != nil {
 				slog.Error(err.Error())
 				http.Error(w, "", http.StatusInternalServerError)
 				return
 			}
-			if verifiedToken != token {
+			if verificationTokenExpiry.Valid && time.Now().After(verificationTokenExpiry.Time) {
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
+			if verificationToken != token || verificationToken == "" {
 				http.Error(w, "", http.StatusUnauthorized)
 				return
 			}
 
-			_, err = db.Pool.Exec(ctx, "UPDATE users SET email_verified = true, email_verification_token = null WHERE id = $1", userID)
+			_, err = db.Pool.Exec(ctx, "UPDATE users SET email_verified = true, email_verification_token = '', email_verification_token_expiry = null WHERE id = $1", userID)
 			if err != nil {
 				slog.Error(err.Error())
 				http.Error(w, "", http.StatusInternalServerError)
 				return
 			}
 		}},
-
 	{
 		URI:    "/signin",
 		Method: "POST",
@@ -182,6 +189,10 @@ Thanks,<br/>
 			var verified bool
 			var encryptedPassword string
 			err := db.Pool.QueryRow(ctx, "SELECT id, name, email_verified, password FROM users WHERE email = $1", email).Scan(&userID, &name, &verified, &encryptedPassword)
+			if err == db.ErrNoRows {
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
 			if err != nil {
 				slog.Error(err.Error())
 				http.Error(w, "", http.StatusInternalServerError)
@@ -189,7 +200,7 @@ Thanks,<br/>
 			}
 
 			if !verified {
-				http.Error(w, "", http.StatusForbidden)
+				http.Error(w, "", http.StatusUnauthorized)
 				return
 			}
 
@@ -232,5 +243,137 @@ Thanks,<br/>
 			JSON(w, &struct {
 				Name string `json:"name"`
 			}{Name: name})
+		}},
+	{
+		URI:    "/init-reset-password",
+		Method: "POST",
+		Params: "email",
+		Do: func(w http.ResponseWriter, r *http.Request) {
+			ctx := r.Context()
+
+			email := r.FormValue("email")
+
+			// check if user already exists
+			var exists bool
+			err := db.Pool.QueryRow(ctx, "SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)", email).Scan(&exists)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			if !exists {
+				// respond with success even if user doesn't exist
+				// with fake correlation token
+				JSON(w, &struct {
+					PasswordResetCorrelationToken string `json:"password_reset_correlation_token"`
+				}{PasswordResetCorrelationToken: random(32)})
+				return
+			}
+
+			// check expiry of previous reset token
+			var currentPasswordResetTokenExpiry sql.NullTime
+			var currentPasswordCorrelationToken string
+			err = db.Pool.QueryRow(ctx, "SELECT password_reset_token_expiry, password_reset_correlation_token FROM users WHERE email = $1", email).Scan(&currentPasswordResetTokenExpiry, &currentPasswordCorrelationToken)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			// if token is still valid, return 200 with the current correlation token
+			if currentPasswordResetTokenExpiry.Valid && time.Now().Before(currentPasswordResetTokenExpiry.Time) {
+				JSON(w, &struct {
+					PasswordResetCorrelationToken string `json:"password_reset_correlation_token"`
+				}{PasswordResetCorrelationToken: currentPasswordCorrelationToken})
+				return
+			}
+
+			passwordResetToken := random(20)
+			passwordResetCorrelationToken := random(32)
+			passwordResetTokenExpiry := time.Now().Add(time.Minute * 5)
+
+			_, err = db.Pool.Exec(ctx, "UPDATE users SET password_reset_token = $1, password_reset_correlation_token = $2, password_reset_token_expiry = $3 WHERE email = $4", passwordResetToken, passwordResetCorrelationToken, passwordResetTokenExpiry, email)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			// send email to user with password reset token
+			err = emails.Send(email, "Your password reset token", `
+Hello,<br/><br/>
+
+We received a request to reset your password.<br/><br/>
+
+Please use the following token to complete the password reset process:<br/>
+<b>`+passwordResetToken+`</b><br/><br/>
+
+If you didn’t ask to reset your password, you can ignore this email.<br/><br/>
+
+Thanks,<br/>
+`+config.AppName+` Team`)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			JSON(w, &struct {
+				PasswordResetCorrelationToken string `json:"password_reset_correlation_token"`
+			}{PasswordResetCorrelationToken: passwordResetCorrelationToken})
+		}},
+	{
+		URI:    "/reset-password",
+		Method: "POST",
+		Params: "email,password_reset_correlation_token,password_reset_token,new_password",
+		Do: func(w http.ResponseWriter, r *http.Request) {
+			ctx := r.Context()
+
+			email := r.FormValue("email")
+
+			passwordResetCorrelationToken := r.FormValue("password_reset_correlation_token")
+			passwordResetToken := r.FormValue("password_reset_token")
+
+			var _passwordToken string
+			var _passwordCorrelationToken string
+			var _passwordResetTokenExpiry sql.NullTime
+			err := db.Pool.QueryRow(ctx, "SELECT password_reset_token, password_reset_correlation_token, password_reset_token_expiry FROM users WHERE email = $1", email).Scan(&_passwordToken, &_passwordCorrelationToken, &_passwordResetTokenExpiry)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
+
+			if _passwordResetTokenExpiry.Valid && time.Now().After(_passwordResetTokenExpiry.Time) {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
+
+			if _passwordToken != passwordResetToken || _passwordToken == "" || _passwordCorrelationToken != passwordResetCorrelationToken || _passwordCorrelationToken == "" {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
+
+			newPassword := r.FormValue("new_password")
+
+			// encrypt password
+			// cost: https://stackoverflow.com/a/50470009
+			encryptedPassword, err := bcrypt.GenerateFromPassword([]byte(newPassword), config.HashCost)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			// update password, and also verify email
+			_, err = db.Pool.Exec(ctx, "UPDATE users SET email_verified = true, email_verification_token = '', email_verification_token_expiry = null, password_reset_token = '', password_reset_correlation_token = '', password_reset_token_expiry = null, password = $1 WHERE email = $2", encryptedPassword, email)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusUnauthorized)
+				return
+			}
 		}},
 }

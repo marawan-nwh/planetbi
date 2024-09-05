@@ -1,6 +1,8 @@
 module planetbi
 
-go 1.21.1
+go 1.22.0
+
+toolchain go1.22.6
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.30.0
@@ -13,6 +15,7 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/pkg/errors v0.9.1
 	github.com/rs/xid v1.5.0
+	gitlab.com/greyxor/slogor v1.2.11
 	golang.org/x/crypto v0.21.0
 )
 
@@ -36,5 +39,6 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	golang.org/x/sync v0.1.0 // indirect
+	golang.org/x/sys v0.24.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 )

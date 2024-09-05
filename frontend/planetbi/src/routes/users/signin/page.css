@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #f6fafe;
+  background: #f2f7fc;
 }
 
 .form-wrapper {
@@ -26,6 +26,17 @@ body {
     font-weight: 500;
   }
 
+  .secret-token-has-been-sent {
+    font-size: 12px;
+    margin: 0 0 12px;
+    color: #000;
+    line-height: 1.4;
+    border: 1px solid #71b5ff;
+    background: #d9f0ffad;
+    padding: 7px 9px 8px 13px;
+    border-radius: 4px;
+  }
+
   .i-dont-have-an-account {
     position: absolute;
     top: 38px;
@@ -42,12 +53,34 @@ body {
     }
   }
 
+  .forgot-password {
+    position: absolute;
+    top: 38px;
+    right: 37px;
+    cursor: pointer;
+
+    span {
+      font-size: 14px;
+      border-bottom: 1.4px solid;
+      padding-bottom: 2px;
+      word-spacing: -1px;
+      color: #0e71c3;
+      text-decoration: none;
+
+      &:hover {
+        border-bottom: 2px solid;
+      }
+    }
+  }
+
   .form {
     position: relative;
     margin-bottom: 6px;
     padding-bottom: 11px;
 
-    button#signin {
+    button#signin,
+    button#next,
+    button#reset-password {
       width: 100%;
       margin-bottom: 5px;
       padding: 5px 0;
@@ -67,6 +100,10 @@ body {
         height: 17px;
         cursor: pointer;
         padding: 3px;
+
+        &.disabled {
+          cursor: not-allowed !important;
+        }
       }
 
       svg path {
@@ -87,7 +124,7 @@ body {
         border-radius: 3px;
         font-size: 15px;
         transition: box-shadow 0.1s ease, border-color 0.25s ease;
-        box-shadow: #767e85 0px 0px 0px 0.6px;
+        box-shadow: #646b71 0px 0px 0px 0.6px;
       }
 
       input:focus ~ .placeholder,
@@ -102,28 +139,9 @@ body {
         pointer-events: none;
         left: 12px;
         top: 15px;
-        color: #484e56;
+        color: #414954;
         font-size: 14px;
         transition: 0.2s ease all;
-      }
-    }
-
-    .forgot-password {
-      text-align: center;
-      font-size: 12px;
-      margin: 9px 0 11px;
-      color: #586169;
-
-      a {
-        color: #586169;
-        border-bottom: 1px solid #a1abb4;
-        padding-bottom: 1px;
-        text-decoration: none;
-
-        &:hover {
-          color: #4b5259;
-          border-bottom: 1px solid #818a93;
-        }
       }
     }
   }

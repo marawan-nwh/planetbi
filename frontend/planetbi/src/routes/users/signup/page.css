@@ -5,26 +5,7 @@
 }
 
 body {
-  background: #f6fafe;
-}
-
-.account-created {
-  text-align: center;
-  margin: 70px 0;
-
-  h1 {
-    margin: 5px 0 0;
-    color: #000;
-  }
-
-  p {
-    font-size: 20px;
-    margin: 14px 0;
-  }
-
-  svg {
-    fill: #4487e2;
-  }
+  background: #f2f7fc;
 }
 
 .form-wrapper {
@@ -35,6 +16,29 @@ body {
   border-radius: 8px;
   padding: 25px 32px 9px;
   box-shadow: 0 12px 48px rgb(26 39 52 / 11%);
+
+  .account-created {
+    text-align: center;
+    margin: 15px 0 40px;
+
+    h1 {
+      margin: 4px 0 0;
+      color: #000;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 19px;
+      margin: 5px 38px 0;
+      line-height: 1.2;
+    }
+
+    svg {
+      fill: #4487e2;
+      height: 39px;
+    }
+  }
 
   .title {
     margin-top: 9px;
@@ -106,7 +110,7 @@ body {
         border-radius: 3px;
         font-size: 15px;
         transition: box-shadow 0.1s ease, border-color 0.25s ease;
-        box-shadow: #767e85 0px 0px 0px 0.6px;
+        box-shadow: #646b71 0px 0px 0px 0.6px;
       }
 
       input:focus ~ .placeholder,
@@ -121,7 +125,7 @@ body {
         pointer-events: none;
         left: 12px;
         top: 15px;
-        color: #484e56;
+        color: #414954;
         font-size: 14px;
         transition: 0.2s ease all;
       }

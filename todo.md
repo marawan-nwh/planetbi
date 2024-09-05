@@ -2,12 +2,11 @@
 
 - Authentication handlers and pages
   - Consistent CSS classes and shared CSS would be nice
-  - Forgot password
-  - Reset password
+  - Reverify
+  - Sucess message after password reset
+  - Create tests for all auth endpoints and all cenarios
 - Email sending needs more testing (could this be because it is in sandbox now?)
 - In the signin page (if not verified), and in the verification page, provide a way to resend the verification email
-  email_verification_token_expiry
-  email_verification_token_updated_at
 - Homepage
 - Account page (view, edit, delete account)
 - Create view and viewlist

@@ -218,4 +218,12 @@ button {
 
 input {
   height: 33.3px;
+
+  &:disabled {
+    background: #f7fafe57;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
 }

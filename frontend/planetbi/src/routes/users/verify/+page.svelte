@@ -68,7 +68,7 @@
       clip-rule="evenodd"
     />
   </svg>
-  <h1>Verified successfully</h1>
+  <h1>Verified successfully!</h1>
   <p>
     You can now <a href="/users/signin">sign in</a>, and start using PlanetBI.
   </p>
