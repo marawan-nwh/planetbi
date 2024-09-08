@@ -90,8 +90,8 @@ body {
     text-decoration: none;
 
     &:hover {
-      color: #4b5259;
-      border-bottom: 1px solid #818a93;
+      color: #2f3236;
+      border-bottom: 1px solid #757d85;
     }
   }
 }

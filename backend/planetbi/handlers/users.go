@@ -99,7 +99,7 @@ Thanks,<br/>
 			// create user
 			userID := xid.New().String()
 			verificationToken := random(32)
-			verificationTokenExpiry := time.Now().Add(time.Minute * 5)
+			verificationTokenExpiry := time.Now().Add(config.EmailVerificationTokenLifetime)
 			_, err = db.Pool.Exec(ctx, `INSERT INTO users (id, name, email, password, email_verification_token, email_verification_token_expiry) VALUES ($1, $2, $3, $4, $5, $6)`, userID, name, email, encryptedPassword, verificationToken, verificationTokenExpiry)
 			if err != nil {
 				slog.Error(err.Error())
@@ -168,7 +168,7 @@ Thanks,<br/>
 			}
 
 			verificationToken := random(32)
-			verificationTokenExpiry := time.Now().Add(time.Minute * 5)
+			verificationTokenExpiry := time.Now().Add(config.EmailVerificationTokenLifetime)
 
 			_, err = db.Pool.Exec(ctx, "UPDATE users SET email_verification_token = $1, email_verification_token_expiry = $2 WHERE id = $3", verificationToken, verificationTokenExpiry, userID)
 			if err != nil {
@@ -362,7 +362,7 @@ Thanks,<br/>
 
 			passwordResetToken := random(20)
 			passwordResetCorrelationToken := random(32)
-			passwordResetTokenExpiry := time.Now().Add(time.Minute * 5)
+			passwordResetTokenExpiry := time.Now().Add(config.PasswordResetTokenLifetime)
 
 			_, err = db.Pool.Exec(ctx, "UPDATE users SET password_reset_token = $1, password_reset_correlation_token = $2, password_reset_token_expiry = $3 WHERE email = $4", passwordResetToken, passwordResetCorrelationToken, passwordResetTokenExpiry, email)
 			if err != nil {

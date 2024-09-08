@@ -73,7 +73,7 @@
         state = 1;
         disabled = false;
         running = false;
-      }, 1000);
+      }, 500);
     }
   }
 
