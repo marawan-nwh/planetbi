@@ -17,6 +17,39 @@ body {
   padding: 25px 32px 9px;
   box-shadow: 0 12px 48px rgb(26 39 52 / 11%);
 
+  .password-changed {
+    text-align: center;
+    margin: 15px 0 40px;
+
+    h1 {
+      margin: 4px 0 0;
+      color: #000;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 17px;
+      margin: 5px 0px 0;
+      line-height: 1.2;
+
+      a {
+        color: #0e71c3;
+        text-decoration: none;
+
+        &:hover {
+          color: #095b9f;
+          border-bottom: 1px solid;
+        }
+      }
+    }
+
+    svg {
+      fill: #3391e1;
+      width: 40px;
+    }
+  }
+
   .title {
     margin-top: 9px;
     margin-bottom: 27px;
@@ -147,11 +180,9 @@ body {
   }
 }
 
-.error {
-  border: 1px solid #f6b4b4;
+.error,
+.message {
   padding: 11px 20px;
-  background: #ffcccc70;
-  color: #222;
   border-radius: 4px;
   font-weight: 400;
   font-size: 12px;
@@ -167,14 +198,37 @@ body {
     padding: 0 0 3px;
     margin: 0;
     height: 13px;
-    border-bottom: 1px solid #ea9898;
-    color: #bb4343;
     font-size: 11.5px;
     cursor: pointer;
+  }
+}
+
+.error {
+  border: 1px solid #f6b4b4;
+  background: #ffcccc70;
+
+  button {
+    border-bottom: 1px solid #ea9898;
+    color: #bb4343;
 
     &:hover {
       border-bottom: 1px solid #e47171;
       color: #bf2323;
+    }
+  }
+}
+
+.message {
+  border: 1px solid #a9cff2;
+  background: #cce8ff70;
+
+  button {
+    border-bottom: 1px solid #7eb3ea;
+    color: #0b65a7;
+
+    &:hover {
+      border-bottom: 1px solid #67a3e3;
+      color: #025793;
     }
   }
 }

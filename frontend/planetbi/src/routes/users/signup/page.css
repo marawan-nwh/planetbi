@@ -29,14 +29,16 @@ body {
     }
 
     p {
-      font-size: 19px;
+      font-size: 18px;
       margin: 5px 38px 0;
       line-height: 1.2;
     }
 
     svg {
-      fill: #4487e2;
-      height: 39px;
+      fill: #3391e1;
+      height: 40px;
+      stroke: #fff;
+      stroke-width: 8px;
     }
   }
 

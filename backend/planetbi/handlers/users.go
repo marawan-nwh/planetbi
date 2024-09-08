@@ -129,6 +129,77 @@ Thanks,<br/>
 			}
 		}},
 	{
+		URI:    "/resend-verification-email",
+		Method: "POST",
+		Params: "email",
+		Do: func(w http.ResponseWriter, r *http.Request) {
+			ctx := r.Context()
+			email := r.FormValue("email")
+
+			// check if user already verified
+			var verified bool
+			var name string
+			var userID string
+			var currentVerificationTokenExpiry sql.NullTime
+			err := db.Pool.QueryRow(ctx, "SELECT id, name, email_verification_token_expiry, email_verified FROM users WHERE email = $1", email).Scan(&userID, &name, &currentVerificationTokenExpiry, &verified)
+			if err == db.ErrNoRows {
+				// if email doesn't exists, respond with 200 and do nothing
+				// this is ok because in normal flow, the user shouldn't reach this point
+				http.Error(w, "", http.StatusOK)
+				return
+			}
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+			if verified {
+				// we shouldn't respond with a different status here
+				// it will let attackers know if the email is registered
+				// the user shouldn't reach this point too
+				http.Error(w, "", http.StatusOK)
+				return
+			}
+
+			// check if a verification email was sent a few moments ago
+			if currentVerificationTokenExpiry.Valid && time.Now().Before(currentVerificationTokenExpiry.Time) {
+				http.Error(w, "", http.StatusCreated)
+				return
+			}
+
+			verificationToken := random(32)
+			verificationTokenExpiry := time.Now().Add(time.Minute * 5)
+
+			_, err = db.Pool.Exec(ctx, "UPDATE users SET email_verification_token = $1, email_verification_token_expiry = $2 WHERE id = $3", verificationToken, verificationTokenExpiry, userID)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+			// send verification email
+			base := "http://localhost:" + config.ClientPort
+			if isProduction() {
+				base = "https://" + config.Domain
+			}
+			err = emails.Send(email, "Your verification link", `
+Hello `+strings.Split(name, " ")[0]+`,<br/><br/>
+
+Follow this link to verify your email address:
+<a target="_blank" href="`+base+`/users/verify?user_id=`+userID+`&token=`+verificationToken+`">Verify</a><br/><br/>
+
+If you didn’t ask to verify this address, you can ignore this email.<br/><br/>
+
+Thanks,<br/>
+`+config.AppName+` Team`)
+			if err != nil {
+				slog.Error(err.Error())
+				http.Error(w, "", http.StatusInternalServerError)
+				return
+			}
+
+		}},
+	{
 		URI:    "/verify",
 		Method: "POST",
 		Params: "user_id,token",
@@ -200,7 +271,7 @@ Thanks,<br/>
 			}
 
 			if !verified {
-				http.Error(w, "", http.StatusUnauthorized)
+				http.Error(w, "", 406)
 				return
 			}
 

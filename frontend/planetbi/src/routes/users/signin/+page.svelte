@@ -13,15 +13,23 @@
   // 0: initial
   // 1: email has been entered, ask for password
   // 2: password reset initialized, ask for token and new password
+  // 3: password reset successfully
   let state = 0;
 
   let email;
   let password;
+  let unverifiedEmail = false;
 
   let passwordResetToken;
   let passwordResetCorrelationToken = "";
   let newPassword;
   let newPasswordConfirmation;
+
+  let UnverifiedEmailMessageID = 0;
+  let SendingVerificationMessageID = 1;
+  let VerificationEmailSentMessageID = 2;
+  let VerificationEmailSentPreviouslyMessageID = 3;
+  let messageID = UnverifiedEmailMessageID;
 
   let error = "";
   let disabled = false;
@@ -82,6 +90,47 @@
     return /\S+@\S+\.\S+/.test(value);
   }
 
+  function resendVerificationEmail() {
+    error = "";
+    disabled = true;
+
+    // validate email
+    if (!hasValue(email)) {
+      error = "Please enter your email.";
+      disabled = false;
+      return;
+    }
+    if (!isValidEmail(email)) {
+      error = "Please enter a valid email.";
+      disabled = false;
+      return;
+    }
+
+    // clear error
+    error = "";
+
+    messageID = SendingVerificationMessageID;
+
+    http.post(
+      "/resend-verification-email",
+      { email },
+      function (res, status) {
+        messageID = VerificationEmailSentMessageID;
+        disabled = false;
+      },
+      function (res, status) {
+        if (status == 201) {
+          messageID = VerificationEmailSentPreviouslyMessageID;
+          disabled = false;
+        } else {
+          error = "Unexpected error, please try again.";
+          disabled = false;
+          messageID = UnverifiedEmailMessageID;
+        }
+      }
+    );
+  }
+
   function signin() {
     error = "";
     disabled = true;
@@ -122,6 +171,9 @@
       function (res, status) {
         if (status == 401) {
           error = "Invalid email or password.";
+        } else if (status == 406) {
+          messageID = UnverifiedEmailMessageID;
+          unverifiedEmail = true;
         } else {
           error = "Unexpected error, please try again.";
         }
@@ -149,6 +201,7 @@
         disabled = false;
         running = false;
         state = 2;
+        unverifiedEmail = false;
       },
       function (res, status) {
         error = "Unexpected error, please try again.";
@@ -211,6 +264,7 @@
         disabled = false;
         running = false;
         error = "";
+        state = 3;
       },
       function (res, status) {
         error = "Unexpected error, please try again.";
@@ -224,7 +278,27 @@
 <Header />
 
 <div class="form-wrapper">
-  <div class="title">
+  <div class="password-changed {state === 3 ? '' : 'hide'}">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      enable-background="new 0 0 256 256"
+      viewBox="0 0 256 256"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M27.364,99.627c3.874-4.29,10.742-4.86,15.268-1.26   l52.917,42.091c4.526,3.601,11.638,3.27,15.81-0.732L213.38,41.82c4.171-4.002,10.887-3.891,14.92,0.254l24.74,25.404   c4.036,4.139,3.931,10.809-0.236,14.814L116.078,213.814c-4.166,4.008-11.336,4.417-15.932,0.911L3.873,141.291   c-4.595-3.507-5.188-9.883-1.313-14.179L27.364,99.627z"
+        clip-rule="evenodd"
+      />
+    </svg>
+    <h1>Password changed!</h1>
+    <p>
+      Your password has been changed successfully.<br /><a href="/users/signin"
+        >Sign in</a
+      > with your new password.
+    </p>
+  </div>
+
+  <div class="title {state === 3 ? 'hide' : ''}">
     {state === 0 || state === 1 ? "Sign in" : "Reset password"}
   </div>
   <a
@@ -469,6 +543,33 @@
           error = "";
         }}>hide</button
       >
+    </div>
+
+    <div class="message {unverifiedEmail ? '' : 'hide'}">
+      {#if messageID == UnverifiedEmailMessageID}
+        <span>Unverified email.</span>
+        <button on:click={resendVerificationEmail}
+          >Resend verification email</button
+        >
+      {:else if messageID == SendingVerificationMessageID}
+        <span>Sending...</span>
+      {:else if messageID == VerificationEmailSentMessageID}
+        <span>New verification email has been sent!</span>
+        <button
+          on:click={() => {
+            unverifiedEmail = false;
+            messageID = UnverifiedEmailMessageID;
+          }}>hide</button
+        >
+      {:else if messageID == VerificationEmailSentPreviouslyMessageID}
+        <span>Already sent, try again after 5 minutes.</span>
+        <button
+          on:click={() => {
+            unverifiedEmail = false;
+            messageID = UnverifiedEmailMessageID;
+          }}>hide</button
+        >
+      {/if}
     </div>
   </div>
 </div>

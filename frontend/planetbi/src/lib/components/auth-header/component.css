@@ -1,5 +1,5 @@
 .header {
-  padding: 18px 28px;
+  padding: 16px 28px;
   background: #fff;
 
   .logo {
@@ -8,7 +8,8 @@
     }
 
     svg {
-      width: 31px;
+      width: 45px;
+      width: 32px;
       fill: none;
       transform: rotate(45deg);
       stroke: #222;
