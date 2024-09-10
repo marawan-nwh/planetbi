@@ -30,7 +30,10 @@ func main() {
 	)
 
 	headers := gorillaHandlers.AllowedHeaders([]string{"*", "Skip-Recording-Operations", "Content-Type", "Authorization"})
-	origins := gorillaHandlers.AllowedOrigins([]string{"*"})
+
+	// TODO: Check if we can/should drop this in production and replace it with "*"
+	origins := gorillaHandlers.AllowedOrigins([]string{"http://localhost:5173"})
+
 	methods := gorillaHandlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "DELETE", "OPTIONS"})
 
 	http.Handle("/api/", gorillaHandlers.RecoveryHandler()(gorillaHandlers.CORS(headers, methods, origins)(router)))

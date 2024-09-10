@@ -297,6 +297,9 @@ Thanks,<br/>
 			session.Options.SameSite = http.SameSiteLaxMode
 			session.Options.HttpOnly = true
 
+			// TODO: Check if we can/should drop this in production
+			w.Header().Set("Access-Control-Allow-Credentials", "true")
+
 			err = session.Save(r, w)
 			if err != nil {
 				slog.Error(err.Error())
