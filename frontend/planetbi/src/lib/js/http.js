@@ -1,6 +1,6 @@
 import { hasValue } from "$lib/js/common.js";
 
-let BaseURI = "https://planetbi.com";
+let BaseURI = "https://planet.bi";
 
 // https://stackoverflow.com/a/71601719/17931895
 if (import.meta.env.DEV) {
@@ -82,6 +82,10 @@ export let http = {
   },
   post: function (url, params, success, error, headers, timeout, ontimeout) {
     let xhr = new XMLHttpRequest();
+
+    // TODO: Check if we can/should drop this in production
+    xhr.withCredentials = true;
+
     xhr.onreadystatechange = act(xhr, success, error);
     xhr.open("POST", BaseURI + url, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

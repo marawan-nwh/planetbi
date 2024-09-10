@@ -292,8 +292,11 @@
     </svg>
     <h1>Password changed!</h1>
     <p>
-      Your password has been changed successfully.<br /><a href="/users/signin"
-        >Sign in</a
+      Your password has been changed successfully.<br /><a
+        href="/users/signin"
+        on:click={() => {
+          window.location.reload();
+        }}>Sign in</a
       > with your new password.
     </p>
   </div>
