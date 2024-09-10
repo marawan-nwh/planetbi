@@ -2,8 +2,7 @@ header {
   margin: 0 auto;
   display: flex;
   width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #d0d0d0;
+  background: #1f1f20;
   padding: 0 15px 0 15px;
   height: 57px;
   position: relative;
@@ -12,35 +11,37 @@ header {
   .logo {
     text-decoration: none;
     position: absolute;
-    padding-left: 27px;
+    padding-left: 18px;
     top: 18px;
     left: 15px;
 
+    span {
+      font-family: "DM sans";
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
     > svg {
+      height: 14px;
       position: absolute;
-      top: -6px;
-      left: 0px;
-      width: 30px;
-      fill: none;
-      transform: rotate(45deg);
-      stroke: #222;
-      stroke-width: 1.1px;
-      stroke-linecap: round;
-      stroke-linejoin: miter;
+      top: 2px;
+      left: 0;
     }
   }
 
   .search {
-    height: 31.25px;
-    margin: 12px 0 0;
-    border-radius: 8px;
-    font-size: 10.5px;
-    padding: 9px 15px 1px;
+    height: 34.25px;
+    margin: 11px 0 0;
+    border-radius: 9px;
+    font-size: 11px;
+    padding: 10px 15px 1px;
     text-align: left;
     font-weight: 500;
-    color: #666868e8;
-    background: #fff;
-    border: 1px solid #d0d0d0;
+    color: #bcbcbce8;
+    background: transparent;
+    border: 1px solid #555;
     cursor: pointer;
     width: 223px;
     left: 71%;
@@ -48,7 +49,6 @@ header {
 
     > .placeholder {
       margin: 0 auto;
-      width: -moz-fit-content;
       position: relative;
       padding-left: 15px;
 
@@ -119,7 +119,7 @@ header {
 
     .item {
       font-size: 11.5px;
-      color: #444;
+      color: #b5b5b5;
       cursor: pointer;
       flex: initial;
       vertical-align: top;
@@ -131,19 +131,12 @@ header {
       position: relative;
       height: 100%;
 
-      &:hover {
-        color: #222;
-
-        > svg {
-          fill: #222;
-        }
-      }
-
+      &:hover,
       &.active {
-        color: #222;
+        color: #fff;
 
         > svg {
-          fill: #222;
+          fill: #fff;
         }
       }
 
@@ -159,15 +152,15 @@ header {
         } */
 
       > svg {
-        fill: #555;
+        fill: #b5b5b5;
         position: absolute;
       }
 
-      &.home svg {
+      /* &.home svg {
         left: 14.5px;
         top: 18.2px;
         width: 18px;
-      }
+      } */
 
       &.store svg {
         left: 17px;
@@ -180,12 +173,12 @@ header {
         left: 15px;
         top: 18.5px;
         stroke-width: 0;
-        fill: #555;
+        fill: #b5b5b5;
       }
 
       &.menu:hover > svg,
       &.menu.active > svg {
-        fill: #333;
+        fill: #fff;
       }
 
       .nav-dropdown {
