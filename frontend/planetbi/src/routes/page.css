@@ -30,7 +30,7 @@ sidebar {
       position: relative;
 
       &:hover {
-        background: #e7e7e8;
+        background: #e8e7e8;
       }
 
       &.active,
@@ -88,7 +88,7 @@ sidebar {
       position: relative;
 
       &:hover {
-        background: #e7e7e8;
+        background: #e8e7e8;
       }
 
       &.active,

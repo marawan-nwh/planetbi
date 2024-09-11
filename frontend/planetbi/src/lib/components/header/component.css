@@ -32,19 +32,18 @@ header {
   }
 
   .search {
-    height: 34.25px;
-    margin: 11px 0 0;
+    height: 32.5px;
+    margin: 12.5px 0 0;
     border-radius: 9px;
     font-size: 11px;
     padding: 10px 15px 1px;
     text-align: left;
     font-weight: 500;
-    color: #bcbcbce8;
-    background: transparent;
-    border: 1px solid #555;
+    color: #a7a6aaf7;
+    background: #3d3d3fed;
     cursor: pointer;
     width: 223px;
-    left: 71%;
+    left: 71.3%;
     position: absolute;
 
     > .placeholder {
