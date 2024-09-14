@@ -3,7 +3,7 @@
   title.set("");
 
   import Header from "$lib/components/header/component.svelte";
-  import { clickOutside } from "$lib/js/clickoutside.js";
+  import { clickOutside } from "$lib/js/common.js";
 
   let isCreateDropdownOpen = false;
 </script>
