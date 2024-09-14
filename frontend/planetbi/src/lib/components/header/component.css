@@ -2,7 +2,8 @@ header {
   margin: 0 auto;
   display: flex;
   width: 100%;
-  background: #1f1f20;
+  background: #fff;
+  border-bottom: 1px solid #c1c1c4;
   padding: 0 15px 0 15px;
   height: 57px;
   position: relative;
@@ -11,39 +12,55 @@ header {
   .logo {
     text-decoration: none;
     position: absolute;
-    padding-left: 18px;
-    top: 18px;
+    padding-left: 35px;
+    top: 17px;
     left: 15px;
 
     span {
-      font-family: "DM sans";
-      font-weight: 900;
-      font-size: 16px;
       letter-spacing: -0.5px;
-      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      color: #222;
+      font-family: "Manrope", sans-serif;
+
+      .bi {
+        font-weight: 300;
+        display: inline-block;
+        letter-spacing: -1px;
+        margin-left: 1px;
+        font-family: "DM Mono", monospace;
+      }
     }
 
     > svg {
-      height: 14px;
       position: absolute;
-      top: 2px;
+      top: -4px;
       left: 0;
+      border-radius: 5px;
+      width: 27px;
+      fill: none;
+      transform: rotate(45deg);
+      stroke: #2e2f31;
+      stroke-width: 1.1px;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
     }
   }
 
   .search {
-    height: 32.5px;
-    margin: 12.5px 0 0;
-    border-radius: 9px;
-    font-size: 11px;
-    padding: 10px 15px 1px;
+    height: 31.25px;
+    margin: 12px 0 0;
+    border-radius: 8px;
+    font-size: 10.5px;
+    padding: 9px 15px 1px;
     text-align: left;
     font-weight: 500;
-    color: #a7a6aaf7;
-    background: #3d3d3fed;
+    color: #57575ae8;
+    background: #fff;
+    border: 1px solid #c1c1c4;
     cursor: pointer;
     width: 223px;
-    left: 71.3%;
+    left: 71%;
     position: absolute;
 
     > .placeholder {
@@ -70,55 +87,9 @@ header {
   .nav {
     display: flex;
     margin-left: auto;
-
-    .create {
-      border: 1px solid #a5a8ab;
-      padding: 7px 10px 0 25px !important;
-      border-radius: 3px !important;
-      height: 29px !important;
-      margin-top: 9.5px !important;
-
-      &:hover,
-      &.active {
-        background: transparent !important;
-        border: 1px solid #898f93;
-
-        > svg {
-          stroke: #474a50;
-        }
-      }
-
-      > svg {
-        width: 20px;
-        left: 8.5px;
-        top: 3.5px;
-        fill: none !important;
-        stroke: #6d7174;
-      }
-
-      .dropdown {
-        right: -1px;
-        top: 30px;
-        width: 224px;
-
-        & a {
-          height: 45.5px;
-          padding: 9px 12px 0 14px !important;
-        }
-      }
-    }
-
-    .separator {
-      display: block;
-      width: 1px;
-      height: 23px;
-      background: #a9adb2;
-      margin: 12.5px 9px 0 14px;
-    }
-
     .item {
       font-size: 11.5px;
-      color: #b5b5b5;
+      color: #444;
       cursor: pointer;
       flex: initial;
       vertical-align: top;
@@ -132,26 +103,15 @@ header {
 
       &:hover,
       &.active {
-        color: #fff;
+        color: #222;
 
         > svg {
-          fill: #fff;
+          fill: #333;
         }
       }
 
-      /* &.active:after {
-          background: #68a6f0;
-          content: " ";
-          position: absolute;
-          width: 100%;
-          bottom: 0;
-          height: 2.5px;
-          left: 0;
-          border-radius: 50px 50px 0 0;
-        } */
-
       > svg {
-        fill: #b5b5b5;
+        fill: #555;
         position: absolute;
       }
 
@@ -172,12 +132,12 @@ header {
         left: 15px;
         top: 18.5px;
         stroke-width: 0;
-        fill: #b5b5b5;
+        fill: #444;
       }
 
       &.menu:hover > svg,
       &.menu.active > svg {
-        fill: #fff;
+        fill: #222;
       }
 
       .nav-dropdown {

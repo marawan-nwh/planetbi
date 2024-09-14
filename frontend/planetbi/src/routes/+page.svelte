@@ -3,6 +3,9 @@
   title.set("");
 
   import Header from "$lib/components/header/component.svelte";
+  import { clickOutside } from "$lib/js/clickoutside.js";
+
+  let isCreateDropdownOpen = false;
 </script>
 
 <Header />
@@ -188,20 +191,68 @@
         </svg>
         Filter...
       </div>
-      <div class="create">
-        Create
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-          fill="currentColor"
-          class="w-4 h-4"
+
+      <div
+        class="create-menu-wrapper"
+        use:clickOutside
+        on:clickOutside={() => {
+          isCreateDropdownOpen = false;
+        }}
+      >
+        <div
+          class="create-menu-btn"
+          on:click={() => {
+            isCreateDropdownOpen = !isCreateDropdownOpen;
+          }}
         >
-          <path
-            fill-rule="evenodd"
-            d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
+          Create
+
+          {#if isCreateDropdownOpen}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="w-4 h-4"
+              style="transform: rotate(180deg)"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          {:else}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          {/if}
+        </div>
+
+        {#if isCreateDropdownOpen}
+          <div class="create-menu">
+            <a onclick="showCreateDashboardModal()" class="dashboard">
+              Dashboard
+              <div class="desc">Where you monitor data changes</div></a
+            >
+            <a onclick="showCreateMonitorModal()" class="viewset">
+              Viewset
+              <div class="desc">Collection of views</div></a
+            >
+            <a onclick="showCreateViewModal()" class="view">
+              View
+              <div class="desc">Single aspect of your data</div></a
+            >
+          </div>
+        {/if}
       </div>
     </div>
   </div>
