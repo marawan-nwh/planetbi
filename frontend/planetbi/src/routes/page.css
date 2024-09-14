@@ -1,11 +1,11 @@
 sidebar {
   position: fixed;
-  padding: 65px 10px 0 12px;
+  padding: 65px 9px 0 10px;
   width: 18%;
   left: 0;
   top: 0;
   height: 100%;
-  background: #f3f4f8a8;
+  background: #f4f3f8c6;
 
   .nav {
     margin-top: 8px;
@@ -30,7 +30,7 @@ sidebar {
       position: relative;
 
       &:hover {
-        background: #dbd9dcbf;
+        background: #dbd9dc;
       }
 
       &.active,
@@ -88,7 +88,7 @@ sidebar {
       position: relative;
 
       &:hover {
-        background: #e8e7e8;
+        background: #dbd9dc;
       }
 
       &.active,
@@ -313,7 +313,7 @@ dashboards {
       border-bottom: 1px solid #c0c0c0;
 
       &:hover {
-        background: #f6f6f6;
+        background: #f4f3f8c6;
       }
     }
 

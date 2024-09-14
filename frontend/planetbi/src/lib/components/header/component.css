@@ -2,8 +2,7 @@ header {
   margin: 0 auto;
   display: flex;
   width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #c1c1c4;
+  background: #111;
   padding: 0 15px 0 15px;
   height: 57px;
   position: relative;
@@ -12,15 +11,15 @@ header {
   .logo {
     text-decoration: none;
     position: absolute;
-    padding-left: 35px;
+    padding-left: 31px;
     top: 17px;
-    left: 15px;
+    left: 14px;
 
     span {
       letter-spacing: -0.5px;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
-      color: #222;
+      color: #fff;
       font-family: "Manrope", sans-serif;
 
       .bi {
@@ -34,39 +33,39 @@ header {
 
     > svg {
       position: absolute;
-      top: -4px;
       left: 0;
+      width: 24px;
+      top: -2.5px;
       border-radius: 5px;
-      width: 27px;
       fill: none;
       transform: rotate(45deg);
-      stroke: #2e2f31;
+      stroke: #fff;
       stroke-width: 1.1px;
       stroke-linecap: round;
       stroke-linejoin: miter;
     }
   }
 
-  .search {
-    height: 31.25px;
-    margin: 12px 0 0;
-    border-radius: 8px;
+  .quickfind {
+    height: 33.25px;
+    margin: 10px 0 0;
+    border-radius: 9px;
     font-size: 10.5px;
-    padding: 9px 15px 1px;
-    text-align: left;
-    font-weight: 500;
-    color: #57575ae8;
-    background: #fff;
-    border: 1px solid #c1c1c4;
+    padding: 10.5px 15px 0;
+    text-align: center;
+    font-weight: 600;
+    color: #e7e3dfa8;
+    background: #ffffff29;
     cursor: pointer;
-    width: 223px;
-    left: 71%;
+    width: 600px;
+    left: calc(50% - 300px);
     position: absolute;
 
     > .placeholder {
       margin: 0 auto;
       position: relative;
       padding-left: 15px;
+      width: fit-content;
 
       > svg {
         width: 14px;
@@ -87,14 +86,15 @@ header {
   .nav {
     display: flex;
     margin-left: auto;
+
     .item {
       font-size: 11.5px;
-      color: #444;
+      color: #b5b5b5;
       cursor: pointer;
       flex: initial;
       vertical-align: top;
       text-decoration: none;
-      padding: 22px 12px 0 36px;
+      padding: 22px 10px 0 28px;
       font-weight: 600;
       display: inline-block;
       text-align: center;
@@ -103,26 +103,42 @@ header {
 
       &:hover,
       &.active {
-        color: #222;
+        color: #fff;
 
         > svg {
-          fill: #333;
+          fill: #fff;
         }
       }
 
+      &.active:after {
+        background: #68a6f0;
+        content: " ";
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        height: 2.5px;
+        left: 0;
+        border-radius: 50px 50px 0 0;
+      }
+
       > svg {
-        fill: #555;
+        fill: #b5b5b5;
         position: absolute;
       }
 
-      /* &.home svg {
-        left: 14.5px;
+      &.home,
+      &.store {
+        margin-left: 10px;
+      }
+
+      &.home svg {
+        left: 7px;
         top: 18.2px;
         width: 18px;
-      } */
+      }
 
       &.store svg {
-        left: 17px;
+        left: 10px;
         top: 18.9px;
         width: 17px;
       }
@@ -132,12 +148,12 @@ header {
         left: 15px;
         top: 18.5px;
         stroke-width: 0;
-        fill: #444;
+        fill: #b5b5b5;
       }
 
       &.menu:hover > svg,
       &.menu.active > svg {
-        fill: #222;
+        fill: #fff;
       }
 
       .nav-dropdown {
