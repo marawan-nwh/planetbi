@@ -5,7 +5,7 @@ sidebar {
   left: 0;
   top: 0;
   height: 100%;
-  background: #f4f3f8c6;
+  background: #f3f4f887;
 
   .nav {
     margin-top: 8px;
@@ -14,7 +14,7 @@ sidebar {
       font-size: 10px;
       letter-spacing: 1px;
       font-weight: 500;
-      color: #545762;
+      color: #616265;
       margin-bottom: 8px;
       text-transform: uppercase;
     }
@@ -30,7 +30,7 @@ sidebar {
       position: relative;
 
       &:hover {
-        background: #dbd9dc;
+        background: #dad9dcde;
       }
 
       &.active,
@@ -72,7 +72,7 @@ sidebar {
       font-size: 10px;
       letter-spacing: 1px;
       font-weight: 500;
-      color: #545762;
+      color: #616265;
       margin-bottom: 8px;
       text-transform: uppercase;
     }
@@ -88,7 +88,7 @@ sidebar {
       position: relative;
 
       &:hover {
-        background: #dbd9dc;
+        background: #dad9dcde;
       }
 
       &.active,
@@ -229,22 +229,27 @@ dashboards {
         right: -1px;
         top: 32px;
 
-        a {
+        .create-menu-item {
           text-align: left;
           position: relative;
           cursor: pointer;
           display: block;
           text-decoration: none;
-          border-bottom: 1px solid #bfc2c5;
-          padding: 9px 13px 0 13px;
-          color: #000;
+          border-bottom: 1px solid #d4d3dc;
+          color: #111;
           font-weight: 500;
           font-size: 11.5px;
-          height: 45.5px;
-          padding: 9px 12px 0 14px !important;
+          padding: 10px 14px;
 
+          .dashboard,
+          .viewset,
+          .view {
+            /* background: #f4f3f8c6; */
+          }
           &:hover {
-            background: #f6f6f6;
+            background: #f6f6f7d6;
+            /* color: #fff; */
+            /* background: #48a2ea; */
           }
 
           &:first-of-type {
@@ -261,6 +266,7 @@ dashboards {
             font-size: 10.4px;
             font-weight: 400;
             margin-top: 2px;
+            color: #333;
           }
         }
       }
@@ -313,7 +319,7 @@ dashboards {
       border-bottom: 1px solid #c0c0c0;
 
       &:hover {
-        background: #f4f3f8c6;
+        background: #f6f6f7d6;
       }
     }
 

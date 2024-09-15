@@ -2,7 +2,7 @@ header {
   margin: 0 auto;
   display: flex;
   width: 100%;
-  background: #111;
+  background: #1f1f20;
   padding: 0 15px 0 15px;
   height: 57px;
   position: relative;
@@ -55,7 +55,7 @@ header {
     text-align: center;
     font-weight: 600;
     color: #e7e3dfa8;
-    background: #ffffff29;
+    background: #ffffff2e;
     cursor: pointer;
     width: 600px;
     left: calc(50% - 300px);

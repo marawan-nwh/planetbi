@@ -239,18 +239,24 @@
 
         {#if isCreateDropdownOpen}
           <div class="create-menu">
-            <a onclick="showCreateDashboardModal()" class="dashboard">
-              Dashboard
-              <div class="desc">Where you monitor data changes</div></a
-            >
-            <a onclick="showCreateMonitorModal()" class="viewset">
-              Viewset
-              <div class="desc">Collection of views</div></a
-            >
-            <a onclick="showCreateViewModal()" class="view">
-              View
-              <div class="desc">Single aspect of your data</div></a
-            >
+            <div class="create-menu-item">
+              <div onclick="showCreateDashboardModal()" class="dashboard">
+                Dashboard
+                <div class="desc">Where you monitor data changes</div>
+              </div>
+            </div>
+            <div class="create-menu-item">
+              <div onclick="showCreateMonitorModal()" class="viewset">
+                Viewset
+                <div class="desc">Collection of views</div>
+              </div>
+            </div>
+            <div class="create-menu-item">
+              <div onclick="showCreateViewModal()" class="view">
+                View
+                <div class="desc">Single aspect of your data</div>
+              </div>
+            </div>
           </div>
         {/if}
       </div>
