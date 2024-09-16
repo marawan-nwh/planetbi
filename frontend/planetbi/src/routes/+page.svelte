@@ -200,7 +200,7 @@
         }}
       >
         <div
-          class="create-menu-btn"
+          class="create-menu-btn btn-blue"
           on:click={() => {
             isCreateDropdownOpen = !isCreateDropdownOpen;
           }}

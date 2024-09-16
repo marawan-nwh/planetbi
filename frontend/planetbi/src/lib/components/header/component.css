@@ -2,13 +2,14 @@ header {
   margin: 0 auto;
   display: flex;
   width: 100%;
-  background: #1f1f20;
+  background: #222;
+  background: #2a2929;
   padding: 0 15px 0 15px;
   height: 57px;
   position: relative;
   z-index: 9999;
 
-  .logo {
+  /* .logo {
     text-decoration: none;
     position: absolute;
     padding-left: 31px;
@@ -44,25 +45,56 @@ header {
       stroke-linecap: round;
       stroke-linejoin: miter;
     }
+  } */
+
+  .logo {
+    text-decoration: none;
+    position: absolute;
+    padding-left: 17px;
+    /* padding-left: 25px; */
+    top: 17px;
+    left: 12px;
+
+    span {
+      font-family: "DM sans";
+      font-weight: 900;
+      font-size: 16px;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+
+    > svg {
+      position: absolute;
+      left: 0;
+      width: 14px;
+      top: 2px;
+      fill: #fff;
+
+      /* width: 20px;
+      position: absolute;
+      top: -1px;
+      left: 0;
+      border-radius: 5px;
+      fill: #fff; */
+    }
   }
 
-  .quickfind {
+  .search {
     height: 33.25px;
-    margin: 10px 0 0;
+    margin: 11px 0 0;
     border-radius: 9px;
     font-size: 10.5px;
     padding: 10.5px 15px 0;
     text-align: center;
-    font-weight: 600;
-    color: #e7e3dfa8;
-    background: #ffffff2e;
+    font-weight: 400;
+    color: #e7e3dfcf;
+    background: #ffffff29;
     cursor: pointer;
-    width: 600px;
-    left: calc(50% - 300px);
+    width: 230px;
+    left: 64.5%;
     position: absolute;
 
     > .placeholder {
-      margin: 0 auto;
       position: relative;
       padding-left: 15px;
       width: fit-content;
@@ -111,7 +143,7 @@ header {
       }
 
       &.active:after {
-        background: #68a6f0;
+        /* background: #68a6f0; */
         content: " ";
         position: absolute;
         width: 100%;

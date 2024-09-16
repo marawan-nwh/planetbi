@@ -5,7 +5,7 @@ sidebar {
   left: 0;
   top: 0;
   height: 100%;
-  background: #f3f4f887;
+  background: #f6f6f6;
 
   .nav {
     margin-top: 8px;
@@ -16,6 +16,7 @@ sidebar {
       font-weight: 500;
       color: #616265;
       margin-bottom: 8px;
+      margin-left: 1px;
       text-transform: uppercase;
     }
 
@@ -24,13 +25,13 @@ sidebar {
       font-size: 14.5px;
       border-radius: 8px;
       font-weight: 500;
-      color: #111;
+      color: #222;
       margin-bottom: 1px;
       cursor: pointer;
       position: relative;
 
       &:hover {
-        background: #dad9dcde;
+        background: #dcd9dcd1;
       }
 
       &.active,
@@ -53,7 +54,7 @@ sidebar {
     }
 
     .item-starred svg {
-      top: 4.5px;
+      top: 6px;
     }
 
     .item-recent svg {
@@ -74,6 +75,7 @@ sidebar {
       font-weight: 500;
       color: #616265;
       margin-bottom: 8px;
+      margin-left: 1px;
       text-transform: uppercase;
     }
 
@@ -82,13 +84,13 @@ sidebar {
       font-size: 14px;
       border-radius: 8px;
       font-weight: 500;
-      color: #111;
+      color: #222;
       margin-bottom: 1px;
       cursor: pointer;
       position: relative;
 
       &:hover {
-        background: #dad9dcde;
+        background: #dcd9dcd1;
       }
 
       &.active,
@@ -150,7 +152,7 @@ dashboards {
     .title {
       font-size: 17px;
       font-weight: 500;
-      color: #333;
+      color: #303030;
       display: inline-block;
       position: relative;
       padding-left: 20px;
@@ -176,9 +178,9 @@ dashboards {
         display: inline-block;
         position: relative;
         font-size: 12px;
-        color: #5c5e65;
+        color: #686868;
         margin-top: 9px;
-        font-weight: 500;
+        font-weight: 400;
         margin-right: 14px;
 
         svg {
@@ -186,21 +188,18 @@ dashboards {
           left: -17px;
           width: 15px;
           top: -1px;
-          fill: #727272;
+          fill: #616161;
           stroke: #fff;
           stroke-width: 0.4px;
         }
       }
 
       .create-menu-btn {
-        background: #fff;
         padding: 8px 23px 9px 17px;
-        color: #222;
         position: relative;
-        font-size: 11px;
-        border-radius: 8px;
-        border: 1px solid #bbb;
-        font-weight: 500;
+        font-size: 11.5px;
+        border-radius: 7px;
+        font-weight: 400;
         display: inline-block;
         cursor: pointer;
 
@@ -225,9 +224,9 @@ dashboards {
         border-radius: 5px;
         min-height: 49px;
         z-index: 9999999;
-        width: 224px;
+        width: 250px;
         right: -1px;
-        top: 32px;
+        top: 33px;
 
         .create-menu-item {
           text-align: left;
@@ -235,21 +234,13 @@ dashboards {
           cursor: pointer;
           display: block;
           text-decoration: none;
-          border-bottom: 1px solid #d4d3dc;
-          color: #111;
-          font-weight: 500;
-          font-size: 11.5px;
-          padding: 10px 14px;
+          border-bottom: 1px solid #c0c0c0;
+          color: #000;
+          font-size: 12px;
+          padding: 11px 16px;
 
-          .dashboard,
-          .viewset,
-          .view {
-            /* background: #f4f3f8c6; */
-          }
           &:hover {
-            background: #f6f6f7d6;
-            /* color: #fff; */
-            /* background: #48a2ea; */
+            background: #f6f6f7fc;
           }
 
           &:first-of-type {
@@ -263,7 +254,7 @@ dashboards {
 
           .desc {
             display: block;
-            font-size: 10.4px;
+            font-size: 11.5px;
             font-weight: 400;
             margin-top: 2px;
             color: #333;
@@ -284,7 +275,7 @@ dashboards {
 
     .cl {
       font-size: 11px;
-      color: #222;
+      color: #111;
       position: absolute;
       font-weight: 500;
 
@@ -334,7 +325,7 @@ dashboards {
     .title {
       font-weight: 400;
       font-size: 14px;
-      color: #111;
+      color: #000;
       width: 175px;
       word-break: break-all;
       text-overflow: ellipsis;
@@ -348,7 +339,7 @@ dashboards {
       left: 63%;
       position: absolute;
       font-size: 11.5px;
-      color: #444;
+      color: #333;
       top: 16px;
       text-transform: capitalize;
     }
@@ -357,14 +348,14 @@ dashboards {
       position: absolute;
       top: 0px;
       left: 0;
-      stroke: #808080;
+      stroke: #666;
     }
 
     .type {
       left: 50%;
       position: absolute;
       font-size: 11.5px;
-      color: #444;
+      color: #333;
       top: 16px;
     }
 
@@ -372,7 +363,7 @@ dashboards {
       left: 76%;
       position: absolute;
       font-size: 11.5px;
-      color: #444;
+      color: #333;
       top: 16px;
     }
 
