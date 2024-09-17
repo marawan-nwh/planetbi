@@ -10,3 +10,9 @@
 - Email sending needs more testing (could this be because it is in sandbox now?)
 - Create tests for important endpoints
 - Rate limiter (espectially for important auth endpoints)
+
+## Ideas
+
+- Dependencies
+  Let the user add URLs of JS libs to views, viewsets or dashboards, and we inject them into the page so they can be used in the views.
+  This will enable the user to do a lot of things that we didn't add or won't add.
