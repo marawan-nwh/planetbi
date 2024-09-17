@@ -3,7 +3,7 @@
 - Authentication handlers and pages
   - Auth pages should redirect to homepage if user is already signed in
   - Review all auth endpoint
-- Homepage (Role (View, Editor, Owner))
+- Homepage (Role/Access (View, Editor, Owner))
 - Account page (view, edit, delete account)
 - Create view and viewlist
 - Add terms and conditions, and check the link in the signup page

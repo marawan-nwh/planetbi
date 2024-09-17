@@ -43,8 +43,8 @@ header {
     color: #aaa;
     border: 1px solid #555;
     cursor: pointer;
-    width: 230px;
-    left: 71.5%;
+    width: 250px;
+    right: 133px;
     position: absolute;
 
     > .placeholder {
