@@ -1,3 +1,9 @@
+/* disable the password reveal feature/button in micorsoft edge
+ https://learn.microsoft.com/en-us/microsoft-edge/web-platform/password-reveal */
+::-ms-reveal {
+  display: none;
+}
+
 * {
   box-sizing: border-box;
   scrollbar-width: none !important;

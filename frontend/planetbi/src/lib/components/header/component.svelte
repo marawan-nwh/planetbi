@@ -62,7 +62,7 @@
       Store
     </a>
 
-    <div onclick="dropdown(this)" class="menu item dropbtn">
+    <div class="menu item dropbtn">
       <svg
         class="dropbtn"
         viewBox="0 0 290 290"
@@ -171,7 +171,7 @@
           </svg>
           Documentation
         </a>
-        <a onclick="signout()" class="signout">
+        <a class="signout">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -203,6 +203,204 @@
   </div>
 </header>
 
-<style>
-  @import "component.css";
-</style>
+<svelte:head>
+  <style>
+    header {
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      background: #252525;
+      padding: 0 15px 0 15px;
+      height: 57px;
+      position: relative;
+      z-index: 9999;
+
+      .logo {
+        text-decoration: none;
+        position: absolute;
+        padding-left: 17px;
+        top: 17px;
+        left: 12px;
+
+        span {
+          font-family: "DM sans";
+          font-weight: 900;
+          font-size: 16px;
+          letter-spacing: -0.5px;
+          color: #fff;
+        }
+
+        > svg {
+          position: absolute;
+          left: 0;
+          width: 14px;
+          top: 2px;
+          fill: #fff;
+        }
+      }
+
+      .search {
+        height: 33.5px;
+        margin: 11px 0 0;
+        border-radius: 9px;
+        font-size: 10.5px;
+        padding: 10.5px 15px 0;
+        text-align: center;
+        font-weight: 400;
+        color: #aaa;
+        border: 1px solid #555;
+        cursor: pointer;
+        width: 250px;
+        right: 133px;
+        position: absolute;
+
+        > .placeholder {
+          position: relative;
+          padding-left: 15px;
+          width: fit-content;
+
+          > svg {
+            width: 14px;
+            position: absolute;
+            left: 0;
+            top: -1px;
+          }
+        }
+
+        &:hover {
+        }
+
+        &::selection {
+          background: transparent;
+        }
+      }
+
+      .nav {
+        display: flex;
+        margin-left: auto;
+
+        .item {
+          font-size: 11.5px;
+          color: #b5b5b5;
+          cursor: pointer;
+          flex: initial;
+          vertical-align: top;
+          text-decoration: none;
+          padding: 22px 10px 0 28px;
+          font-weight: 600;
+          display: inline-block;
+          text-align: center;
+          position: relative;
+          height: 100%;
+
+          &:hover,
+          &.active {
+            color: #fff;
+
+            > svg {
+              fill: #fff;
+            }
+          }
+
+          &.active:after {
+            content: " ";
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            height: 2.5px;
+            left: 0;
+            border-radius: 50px 50px 0 0;
+          }
+
+          > svg {
+            fill: #b5b5b5;
+            position: absolute;
+          }
+
+          &.home,
+          &.store {
+            margin-left: 10px;
+          }
+
+          &.home svg {
+            left: 7px;
+            top: 18.2px;
+            width: 18px;
+          }
+
+          &.store svg {
+            left: 10px;
+            top: 18.9px;
+            width: 17px;
+          }
+
+          &.menu > svg {
+            width: 20px;
+            left: 15px;
+            top: 18.5px;
+            stroke-width: 0;
+            fill: #b5b5b5;
+          }
+
+          &.menu:hover > svg,
+          &.menu.active > svg {
+            fill: #fff;
+          }
+
+          .nav-dropdown {
+            right: 0;
+            top: 47px;
+
+            & a {
+              padding-left: 35px;
+            }
+
+            & svg {
+              fill: none;
+              stroke: #3a3d44;
+              position: absolute;
+            }
+
+            .datasources svg {
+              width: 22px;
+              left: 9px;
+              top: 5px;
+            }
+
+            .runners svg {
+              width: 20px;
+              top: 6px;
+              left: 10px;
+              fill: #484a50;
+              stroke-width: 0;
+            }
+
+            .account svg {
+              width: 19.5px;
+              left: 10.2px;
+              top: 6px;
+            }
+
+            .support svg {
+              width: 19px;
+              top: 6.5px;
+              left: 10px;
+            }
+
+            .documentation svg {
+              width: 16px;
+              top: 8px;
+              left: 11.5px;
+            }
+
+            .signout svg {
+              width: 17px;
+              top: 6.5px;
+              left: 9px;
+            }
+          }
+        }
+      }
+    }
+  </style>
+</svelte:head>

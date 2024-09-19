@@ -577,6 +577,237 @@
   </div>
 </div>
 
-<style>
-  @import "page.css";
-</style>
+<svelte:head>
+  <style>
+    body {
+      background: #f2f7fc;
+    }
+
+    .form-wrapper {
+      margin: 44px auto 45px;
+      width: 450px;
+      position: relative;
+      background: #fff;
+      border-radius: 8px;
+      padding: 25px 32px 9px;
+      box-shadow: 0 12px 48px rgb(26 39 52 / 11%);
+
+      .password-changed {
+        text-align: center;
+        margin: 15px 0 40px;
+
+        h1 {
+          margin: 4px 0 0;
+          color: #000;
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 17px;
+          margin: 5px 0px 0;
+          line-height: 1.2;
+
+          a {
+            color: #0e71c3;
+            text-decoration: none;
+
+            &:hover {
+              color: #095b9f;
+              border-bottom: 1px solid;
+            }
+          }
+        }
+
+        svg {
+          fill: #3391e1;
+          width: 40px;
+        }
+      }
+
+      .title {
+        margin-top: 9px;
+        margin-bottom: 27px;
+        font-size: 22px;
+        color: #111;
+        word-spacing: -1px;
+        font-weight: 500;
+      }
+
+      .secret-token-has-been-sent {
+        font-size: 12px;
+        margin: 0 0 12px;
+        color: #000;
+        line-height: 1.4;
+        border: 1px solid #71b5ff;
+        background: #d9f0ffad;
+        padding: 7px 9px 8px 13px;
+        border-radius: 4px;
+      }
+
+      .i-dont-have-an-account {
+        position: absolute;
+        top: 38px;
+        right: 34px;
+        font-size: 14px;
+        border-bottom: 1.4px solid;
+        padding-bottom: 2px;
+        word-spacing: -1px;
+        color: #0e71c3;
+        text-decoration: none;
+
+        &:hover {
+          border-bottom: 2px solid;
+        }
+      }
+
+      .forgot-password {
+        position: absolute;
+        top: 38px;
+        right: 34px;
+        cursor: pointer;
+
+        span {
+          font-size: 14px;
+          border-bottom: 1.4px solid;
+          padding-bottom: 2px;
+          word-spacing: -1px;
+          color: #0e71c3;
+          text-decoration: none;
+
+          &:hover {
+            border-bottom: 2px solid;
+          }
+        }
+      }
+
+      .form {
+        position: relative;
+        margin-bottom: 6px;
+        padding-bottom: 11px;
+
+        button#signin,
+        button#next,
+        button#reset-password {
+          width: 100%;
+          margin-bottom: 5px;
+          padding: 5px 0;
+          height: 47px;
+          font-size: 14px;
+          border-radius: 4px !important;
+        }
+
+        .input-wrapper {
+          position: relative;
+
+          svg {
+            position: absolute;
+            right: 8.5px;
+            top: 15.5px;
+            width: 22px;
+            height: 17px;
+            cursor: pointer;
+            padding: 3px;
+
+            &.disabled {
+              cursor: not-allowed !important;
+            }
+          }
+
+          svg path {
+            fill: #646d75;
+          }
+
+          svg.revealed {
+            top: 13.5px;
+            height: 20px;
+          }
+
+          input {
+            width: 385px;
+            border: none;
+            margin-bottom: 8px;
+            padding: 14px 34px 0 12px;
+            height: 46px;
+            border-radius: 3px;
+            font-size: 15px;
+            transition:
+              box-shadow 0.1s ease,
+              border-color 0.25s ease;
+            border: 1px solid #646b71;
+          }
+
+          input:focus ~ .placeholder,
+          input:not(:focus).has-value ~ .placeholder {
+            top: 7px;
+            left: 12px;
+            font-size: 11px;
+          }
+
+          .placeholder {
+            position: absolute;
+            pointer-events: none;
+            left: 12px;
+            top: 15px;
+            color: #414954;
+            font-size: 14px;
+            transition: 0.2s ease all;
+          }
+        }
+      }
+    }
+
+    .error,
+    .message {
+      padding: 11px 20px;
+      border-radius: 4px;
+      font-weight: 400;
+      font-size: 12px;
+      position: relative;
+      text-align: center;
+      width: 100%;
+      line-height: 1.3;
+      margin: 5px auto 1px;
+
+      button {
+        background: none;
+        border: none;
+        padding: 0 0 3px;
+        margin: 0;
+        height: 13px;
+        font-size: 11.5px;
+        cursor: pointer;
+      }
+    }
+
+    .error {
+      border: 1px solid #f6b4b4;
+      background: #ffcccc70;
+
+      button {
+        border-bottom: 1px solid #ea9898;
+        color: #bb4343;
+
+        &:hover {
+          border-bottom: 1px solid #e47171;
+          color: #bf2323;
+        }
+      }
+    }
+
+    .message {
+      border: 1px solid #a9cff2;
+      background: #cce8ff70;
+
+      button {
+        border-bottom: 1px solid #7eb3ea;
+        color: #0b65a7;
+
+        &:hover {
+          border-bottom: 1px solid #67a3e3;
+          color: #025793;
+        }
+      }
+    }
+  </style>
+</svelte:head>
