@@ -3,9 +3,40 @@
   title.set("");
 
   import Header from "$lib/components/header/component.svelte";
-  import { clickOutside } from "$lib/js/common.js";
+  import { clickOutside, hasValue } from "$lib/js/common.js";
 
   let isCreateDropdownOpen = false;
+
+  // modal
+  let modalVisible = false;
+  let modalBtnDisabled = true;
+  let modalBtnRunning = false;
+  let modalError = "";
+
+  // create viewset modal
+  let modalViewsetName = "";
+
+  function createViewset() {
+    modalError = "";
+    modalBtnDisabled = true;
+    modalBtnRunning = true;
+
+    // validate name
+    if (!hasValue(modalViewsetName)) {
+      // modalError = "Please enter your name.";
+      // modalBtnDisabled = false;
+      // modalBtnRunning = false;
+      return;
+    }
+  }
+
+  function toggleModalBtn() {
+    if (modalViewsetName.length > 0) {
+      modalBtnDisabled = false;
+    } else {
+      modalBtnDisabled = true;
+    }
+  }
 </script>
 
 <Header />
@@ -228,16 +259,16 @@
                 <div class="desc">Where you monitor data changes</div>
               </div>
             </div>
-            <div class="create-menu-item">
+            <div
+              class="create-menu-item"
+              on:click={() => {
+                modalVisible = true;
+                isCreateDropdownOpen = false;
+              }}
+            >
               <div class="viewset">
                 Viewset
-                <div class="desc">Collection of views</div>
-              </div>
-            </div>
-            <div class="create-menu-item">
-              <div class="view">
-                View
-                <div class="desc">Single aspect of your data</div>
+                <div class="desc">One or more views</div>
               </div>
             </div>
           </div>
@@ -540,6 +571,52 @@
   </div>
 </dashboards>
 
+<div class="modal-wrapper {modalVisible ? '' : 'hide'}">
+  <div class="modal">
+    <button
+      class="close"
+      on:click={() => {
+        modalVisible = false;
+      }}
+    ></button>
+    <div class="title">Create viewset</div>
+
+    <div class="form">
+      <div class="title">
+        Viewset name <span style="color: #ea6c76;">*</span>
+      </div>
+      <input
+        type="text"
+        placeholder="Name"
+        bind:value={modalViewsetName}
+        on:keydown={(e) => {
+          if (e.key === "Enter") {
+            createViewset();
+          }
+        }}
+        on:keyup={toggleModalBtn}
+      />
+      <button
+        on:click={createViewset}
+        class="ld-over btn-blue"
+        disabled={modalBtnDisabled}
+      >
+        <div class="ld ld-ring ld-cycle"></div>
+        Create viewset
+      </button>
+
+      <div class="error {!modalError ? 'hide' : ''}">
+        <span>{modalError}</span>
+        <button
+          on:click={() => {
+            modalError = "";
+          }}>hide</button
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
 <svelte:head>
   <style>
     sidebar {
@@ -751,7 +828,7 @@
             z-index: 9999999;
             width: 250px;
             right: -1px;
-            top: 33px;
+            top: 34px;
 
             .create-menu-item {
               text-align: left;
@@ -762,7 +839,7 @@
               border-bottom: 1px solid #c8c8c8;
               color: #000;
               font-size: 12px;
-              padding: 11px 16px;
+              padding: 10px 14px;
 
               &:hover {
                 background: #f6f6f6;
@@ -1004,6 +1081,134 @@
             color: #333;
             border: 1px solid #d0d0d0;
             background: #fff;
+          }
+        }
+      }
+    }
+
+    .modal-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 9999999;
+
+      .modal {
+        background-color: #fff;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: fixed;
+        width: 480px;
+        top: 79px;
+        padding: 20px;
+        border-radius: 8px;
+
+        .close {
+          position: absolute;
+          right: 10px;
+          font-size: 12px;
+          width: 37px;
+          height: 37px;
+          top: 15px;
+          color: #a7a7a7;
+          border: none;
+          border-radius: 50px;
+          padding: 6px 8px 4px;
+          background: #fff;
+          cursor: pointer;
+          z-index: 99;
+          transition:
+            background 0.1s,
+            color 0.1s;
+
+          &:before {
+            content: "\2715";
+            font-weight: 700;
+          }
+
+          &:hover {
+            background: #f5f5f5;
+            color: #555;
+          }
+        }
+
+        .title {
+          margin-top: 3px;
+          margin-bottom: 5px;
+          font-size: 15px;
+          line-height: 1.25;
+          color: #222;
+          box-sizing: border-box;
+          font-weight: 600;
+        }
+
+        .form {
+          margin-top: 9px;
+          position: relative;
+          height: 105px;
+
+          .title {
+            font-family: Inter, sans-serif;
+            color: #777;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            margin-bottom: 6px;
+          }
+
+          input {
+            width: 101%;
+            font-size: 12px;
+            outline: none;
+            height: 33px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px 13px;
+            transition: all 0.3s;
+
+            &::placeholder {
+              color: #999;
+              opacity: 1;
+            }
+
+            &:focus {
+              border: 1px solid #81c2f8;
+              box-shadow: 0 0 0 3px #d8ecfd;
+            }
+
+            &:disabled {
+              background: #f5f5f5;
+              cursor: not-allowed;
+            }
+          }
+
+          button {
+            padding: 10px 23px;
+            cursor: pointer;
+            outline: none;
+            transition:
+              color 0.25s ease,
+              padding 0.25s ease,
+              border 0.25s ease,
+              box-shadow 0.25s ease;
+            vertical-align: bottom;
+            font-size: 12px;
+            display: block;
+            border-radius: 5px;
+            color: #9c9aa3;
+            font-weight: 500;
+            border: none;
+            height: 35px;
+            margin: 0 7px;
+            position: absolute;
+            right: -12px;
+            top: 67px;
+            text-align: right;
           }
         }
       }
