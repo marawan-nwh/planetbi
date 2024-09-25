@@ -118,9 +118,9 @@
     </div>
   </div>
 
-  <div class="collections">
-    <div class="title">Collections</div>
-    <div class="collection">
+  <div class="folders">
+    <div class="title">Folders</div>
+    <div class="folder">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -138,7 +138,7 @@
 
       Finance
     </div>
-    <div class="collection">
+    <div class="folder">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -621,22 +621,22 @@
   <style>
     sidebar {
       position: fixed;
-      padding: 65px 9px 0 10px;
+      padding: 59px 9px 0 10px;
       width: 18%;
       left: 0;
       top: 0;
       height: 100%;
-      background: #faf9f8;
-      border-right: 1.5px solid #eee;
+      background: #f0f5faa3;
+      border-right: 1px solid #d1d9e0;
 
       .nav {
-        margin-top: 8px;
+        margin-top: 13px;
 
         .title {
           font-size: 10px;
-          letter-spacing: 1px;
           font-weight: 500;
-          color: #444;
+          color: #333;
+          letter-spacing: 0.7px;
           margin-bottom: 8px;
           margin-left: 1px;
           text-transform: uppercase;
@@ -645,16 +645,21 @@
         .item {
           padding: 6px 34px;
           font-size: 15.5px;
-          border-radius: 7px;
+          border-radius: 6px;
           font-weight: 500;
-          color: #222;
+          color: #111;
           margin-bottom: 1px;
           cursor: pointer;
           position: relative;
 
-          &:hover,
-          &.active {
-            background: #dcd9dad1;
+          &:hover {
+            background: #c4d1e073;
+          }
+
+          &.active,
+          &.active:hover {
+            background: #c4d1e0c2;
+            color: #111;
           }
 
           svg {
@@ -670,40 +675,47 @@
         }
 
         .item-recent svg {
-          top: 4.5px;
+          top: 5.5px;
         }
 
         .item-archive svg {
-          top: 4.5px;
+          top: 5.2px;
         }
       }
 
-      .collections {
-        margin-top: 20px;
+      .folders {
+        margin-top: 14px;
+        border-top: 1px solid #d1d9e0;
+        padding-top: 14px;
 
         .title {
           font-size: 10px;
-          letter-spacing: 1px;
           font-weight: 500;
-          color: #444;
+          color: #333;
+          letter-spacing: 0.7px;
           margin-bottom: 8px;
           margin-left: 1px;
           text-transform: uppercase;
         }
 
-        .collection {
+        .folder {
           padding: 6.5px 33px;
           font-size: 14px;
-          border-radius: 7px;
+          border-radius: 6px;
           font-weight: 500;
-          color: #222;
+          color: #111;
           margin-bottom: 1px;
           cursor: pointer;
           position: relative;
 
-          &:hover,
-          &.active {
-            background: #dcd9dad1;
+          &:hover {
+            background: #c4d1e073;
+          }
+
+          &.active,
+          &.active:hover {
+            background: #c4d1e0c2;
+            color: #111;
           }
 
           svg {
@@ -723,7 +735,7 @@
         bottom: 23px;
         padding-left: 35px;
         font-size: 12px;
-        color: #7b7c7c;
+        color: #78889b;
         font-weight: 500;
         letter-spacing: -0.2px;
 
@@ -754,7 +766,7 @@
 
       .header {
         height: 51px;
-        border-bottom: 1px solid #c8c8c8;
+        border-bottom: 1px solid #d1d9e0;
 
         .title {
           font-size: 18px;
@@ -776,7 +788,7 @@
             display: inline-block;
             position: relative;
             font-size: 12px;
-            color: #555;
+            color: #65727e;
             margin-top: 9px;
             font-weight: 400;
             margin-right: 14px;
@@ -786,19 +798,19 @@
               left: -17px;
               width: 15px;
               top: -1px;
-              fill: #606060;
+              fill: #65727e;
               stroke: #fff;
               stroke-width: 0.4px;
             }
           }
 
           .create-menu-btn {
-            padding: 9.3px 26px 9.3px 20px;
+            padding: 8.3px 25px 8.3px 17px;
             position: relative;
             font-size: 11.5px;
-            border-radius: 50px;
+            border-radius: 5px;
             font-weight: 400;
-            height: 33px;
+            height: 32px;
             display: inline-block;
             cursor: pointer;
 
@@ -826,7 +838,7 @@
             border-radius: 5px;
             min-height: 49px;
             z-index: 9999999;
-            width: 250px;
+            width: 235px;
             right: -1px;
             top: 34px;
 
@@ -836,7 +848,7 @@
               cursor: pointer;
               display: block;
               text-decoration: none;
-              border-bottom: 1px solid #c8c8c8;
+              border-bottom: 1px solid #d1d9e0;
               color: #000;
               font-size: 12px;
               padding: 10px 14px;
@@ -868,7 +880,7 @@
 
       .cls {
         padding: 8.7px 0 9px;
-        border-bottom: 1px solid #c8c8c8;
+        border-bottom: 1px solid #d1d9e0;
         height: 30.5px;
         width: 100%;
         top: 57px;
@@ -909,7 +921,7 @@
           cursor: pointer;
           text-decoration: none;
           height: 48px;
-          border-bottom: 1px solid #c8c8c8;
+          border-bottom: 1px solid #d1d9e0;
 
           &:hover {
             background: #f7f7f7;

@@ -133,8 +133,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   outline: none;
-  transition: color 0.2s, border-color 0.25s ease, padding 0.25s ease,
-    box-shadow 0.25s ease !important;
+  transition: color 0.2s, border-color 0.25s ease, padding 0.25s ease;
   color: #484e54;
   height: 33px;
   font-weight: 500;
@@ -143,8 +142,6 @@ button {
 
 .btn-primary:hover {
   color: #222;
-  box-shadow: rgb(27 31 36 / 10%) 0 1px 0 0,
-    rgb(255 255 255 / 3%) 0 1px 0 0 inset;
 }
 
 .btn-primary.running {
@@ -173,8 +170,6 @@ button {
 .btn-blue:hover {
   background: #1e82e0 !important;
   border: 0.8px solid #1e82e0 !important;
-  /* box-shadow: rgb(27 31 36 / 10%) 0 1px 0 0,
-    rgb(255 255 255 / 3%) 0 1px 0 0 inset; */
 }
 
 .btn-blue:active,

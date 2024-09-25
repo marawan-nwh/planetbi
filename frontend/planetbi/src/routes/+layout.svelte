@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-  <title>{_title === "" ? "Plainbyte" : _title + " | Plainbyte"}</title>
+  <title>{_title === "" ? "PlanetBI" : _title + " | PlanetBI"}</title>
 </svelte:head>
 
 <slot></slot>

@@ -14,7 +14,7 @@
 ## Notes
 
 - Authorization in Looker Studio is broken and boring, but in theory having that many connections and reports is powerful addition.
-- Looking into this https://www.sisense.com/solutions/finance for example, it looks like reports of this kind are not for Plainbyte. (but could we add and fit them later?)
+- Looking into this https://www.sisense.com/solutions/finance for example, it looks like reports of this kind are not for PlanetBI. (but could we add and fit them later?)
 
 ## Solutions (ways to sell BIs)
 

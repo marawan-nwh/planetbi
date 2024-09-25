@@ -1,17 +1,13 @@
 <header>
   <a class="logo" href="/">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 307.8 315"
-      ><path
-        d="M745,220q17.89,78.4,35.8,156.8L649,265l91,270L515,424l119-49L473,220Z"
-        transform="translate(-473 -220)"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      ><circle cx="12" cy="12" r="9"></circle><path
+        stroke-linecap="round"
+        d="M15.9,3.75a9.81,9.81,0,0,1,.85-.5,16.88,16.88,0,0,1,1.58-.75,8.34,8.34,0,0,1,1.36-.4,3.1,3.1,0,0,1,1.09,0,1.43,1.43,0,0,1,.77.37,1.43,1.43,0,0,1,.37.77,3.1,3.1,0,0,1,0,1.09,8.34,8.34,0,0,1-.4,1.36,16.88,16.88,0,0,1-.75,1.58c-.3.56-.66,1.15-1.07,1.76s-.86,1.24-1.36,1.88-1,1.3-1.63,2-1.2,1.32-1.86,2-1.32,1.28-2,1.86-1.32,1.13-2,1.63-1.27,1-1.88,1.36-1.2.77-1.76,1.07a16.88,16.88,0,0,1-1.58.75,8.34,8.34,0,0,1-1.36.4,3.1,3.1,0,0,1-1.09,0,1.43,1.43,0,0,1-.77-.37,1.43,1.43,0,0,1-.37-.77,3.1,3.1,0,0,1,0-1.09,8.34,8.34,0,0,1,.4-1.36,16.88,16.88,0,0,1,.75-1.58c.3-.56.5-.9.5-.9"
       ></path></svg
     >
-    <span>Plainbyte</span>
   </a>
-  <div class="search">
+  <div class="quickfind">
     <div class="placeholder">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +21,7 @@
           clip-rule="evenodd"
         ></path>
       </svg>
-      Search
+      Quick Find
     </div>
   </div>
   <div class="nav">
@@ -43,14 +39,14 @@
           </div>
         </div>
         <div class="separator"></div> -->
-    <!-- <a class="home item active" href="/home">
+    <a class="home item active" href="/home">
       <svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 24 24">
         <path
           d="M12 3s-6.186 5.34-9.643 8.232A1.041 1.041 0 0 0 2 12a1 1 0 0 0 1 1h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a1 1 0 0 0 1-1 .98.98 0 0 0-.383-.768C18.184 8.34 12 3 12 3z"
         ></path>
       </svg>
       Home
-    </a> -->
+    </a>
     <a class="store item" href="/store">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
         <path
@@ -209,37 +205,32 @@
       margin: 0 auto;
       display: flex;
       width: 100%;
-      background: #252525;
+      background: #fff;
       padding: 0 15px 0 15px;
       height: 57px;
       position: relative;
       z-index: 9999;
+      border-bottom: 1px solid #d1d9e0;
 
       .logo {
         text-decoration: none;
         position: absolute;
         padding-left: 17px;
-        top: 17px;
-        left: 12px;
-
-        span {
-          font-family: "DM sans";
-          font-weight: 900;
-          font-size: 16px;
-          letter-spacing: -0.5px;
-          color: #fff;
-        }
+        top: 12px;
+        left: -3px;
 
         > svg {
-          position: absolute;
-          left: 0;
-          width: 14px;
-          top: 2px;
-          fill: #fff;
+          width: 30px;
+          fill: none;
+          transform: rotate(45deg);
+          stroke: #222;
+          stroke-width: 1.1px;
+          stroke-linecap: round;
+          stroke-linejoin: miter;
         }
       }
 
-      .search {
+      .quickfind {
         height: 33.5px;
         margin: 11px 0 0;
         border-radius: 9px;
@@ -247,23 +238,25 @@
         padding: 10.5px 15px 0;
         text-align: center;
         font-weight: 400;
-        color: #aaa;
-        border: 1px solid #555;
+        color: #7b8a98;
+        border: 1px solid #d1d9e0;
         cursor: pointer;
-        width: 250px;
-        right: 133px;
+        width: 600px;
+        right: calc(50% - 300px);
         position: absolute;
 
         > .placeholder {
           position: relative;
           padding-left: 15px;
           width: fit-content;
+          margin: 0 auto;
 
           > svg {
             width: 14px;
             position: absolute;
             left: 0;
             top: -1px;
+            fill: #88939de8;
           }
         }
 
@@ -281,7 +274,7 @@
 
         .item {
           font-size: 11.5px;
-          color: #b5b5b5;
+          color: #444;
           cursor: pointer;
           flex: initial;
           vertical-align: top;
@@ -295,10 +288,10 @@
 
           &:hover,
           &.active {
-            color: #fff;
+            color: #222;
 
             > svg {
-              fill: #fff;
+              fill: #333;
             }
           }
 
@@ -308,12 +301,13 @@
             width: 100%;
             bottom: 0;
             height: 2.5px;
+            background: #64b5f6;
             left: 0;
             border-radius: 50px 50px 0 0;
           }
 
           > svg {
-            fill: #b5b5b5;
+            fill: #555;
             position: absolute;
           }
 
@@ -339,12 +333,12 @@
             left: 15px;
             top: 18.5px;
             stroke-width: 0;
-            fill: #b5b5b5;
+            fill: #555;
           }
 
           &.menu:hover > svg,
           &.menu.active > svg {
-            fill: #fff;
+            fill: #222;
           }
 
           .nav-dropdown {
