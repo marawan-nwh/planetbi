@@ -27,48 +27,4 @@
   </a>
 </div>
 
-<svelte:head>
-  <style>
-    .header {
-      padding: 16px 28px;
-      background: #fff;
-
-      .logo {
-        a {
-          display: inline-block;
-        }
-
-        svg {
-          width: 45px;
-          width: 32px;
-          fill: none;
-          transform: rotate(45deg);
-          stroke: #222;
-          stroke-width: 1.1px;
-          stroke-linecap: round;
-          stroke-linejoin: miter;
-        }
-      }
-
-      .title {
-        display: inline-block;
-        position: absolute;
-        top: 22.3px;
-        left: 65px;
-        font-size: 17px;
-        font-weight: 700;
-        color: #222;
-        font-family: "Manrope", sans-serif;
-        display: none;
-
-        .bi {
-          font-weight: 300;
-          display: inline-block;
-          letter-spacing: -1px;
-          margin-left: 1px;
-          font-family: "DM Mono", monospace;
-        }
-      }
-    }
-  </style>
-</svelte:head>
+<style src="./component.css" lang="scss"></style>

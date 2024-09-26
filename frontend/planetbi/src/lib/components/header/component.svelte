@@ -1,11 +1,16 @@
 <header>
   <a class="logo" href="/">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      ><circle cx="12" cy="12" r="9"></circle><path
-        stroke-linecap="round"
-        d="M15.9,3.75a9.81,9.81,0,0,1,.85-.5,16.88,16.88,0,0,1,1.58-.75,8.34,8.34,0,0,1,1.36-.4,3.1,3.1,0,0,1,1.09,0,1.43,1.43,0,0,1,.77.37,1.43,1.43,0,0,1,.37.77,3.1,3.1,0,0,1,0,1.09,8.34,8.34,0,0,1-.4,1.36,16.88,16.88,0,0,1-.75,1.58c-.3.56-.66,1.15-1.07,1.76s-.86,1.24-1.36,1.88-1,1.3-1.63,2-1.2,1.32-1.86,2-1.32,1.28-2,1.86-1.32,1.13-2,1.63-1.27,1-1.88,1.36-1.2.77-1.76,1.07a16.88,16.88,0,0,1-1.58.75,8.34,8.34,0,0,1-1.36.4,3.1,3.1,0,0,1-1.09,0,1.43,1.43,0,0,1-.77-.37,1.43,1.43,0,0,1-.37-.77,3.1,3.1,0,0,1,0-1.09,8.34,8.34,0,0,1,.4-1.36,16.88,16.88,0,0,1,.75-1.58c.3-.56.5-.9.5-.9"
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 307.8 315"
+      ><path
+        d="M745,220q17.89,78.4,35.8,156.8L649,265l91,270L515,424l119-49L473,220Z"
+        transform="translate(-473 -220)"
       ></path></svg
     >
+
+    <span>Plainbyte</span>
   </a>
   <div class="quickfind">
     <div class="placeholder">
@@ -39,7 +44,7 @@
           </div>
         </div>
         <div class="separator"></div> -->
-    <a class="home item active" href="/home">
+    <!-- <a class="home item active" href="/home">
       <svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 24 24">
         <path
           d="M12 3s-6.186 5.34-9.643 8.232A1.041 1.041 0 0 0 2 12a1 1 0 0 0 1 1h2v7a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-4h4v4a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-7h2a1 1 0 0 0 1-1 .98.98 0 0 0-.383-.768C18.184 8.34 12 3 12 3z"
@@ -195,206 +200,8 @@
           Sign out
         </a>
       </div>
-    </div>
+    </div> -->
   </div>
 </header>
 
-<svelte:head>
-  <style>
-    header {
-      margin: 0 auto;
-      display: flex;
-      width: 100%;
-      background: #fff;
-      padding: 0 15px 0 15px;
-      height: 57px;
-      position: relative;
-      z-index: 9999;
-      border-bottom: 1px solid #d1d9e0;
-
-      .logo {
-        text-decoration: none;
-        position: absolute;
-        padding-left: 17px;
-        top: 12px;
-        left: -3px;
-
-        > svg {
-          width: 30px;
-          fill: none;
-          transform: rotate(45deg);
-          stroke: #222;
-          stroke-width: 1.1px;
-          stroke-linecap: round;
-          stroke-linejoin: miter;
-        }
-      }
-
-      .quickfind {
-        height: 33.5px;
-        margin: 11px 0 0;
-        border-radius: 9px;
-        font-size: 10.5px;
-        padding: 10.5px 15px 0;
-        text-align: center;
-        font-weight: 400;
-        color: #7b8a98;
-        border: 1px solid #d1d9e0;
-        cursor: pointer;
-        width: 600px;
-        right: calc(50% - 300px);
-        position: absolute;
-
-        > .placeholder {
-          position: relative;
-          padding-left: 15px;
-          width: fit-content;
-          margin: 0 auto;
-
-          > svg {
-            width: 14px;
-            position: absolute;
-            left: 0;
-            top: -1px;
-            fill: #88939de8;
-          }
-        }
-
-        &:hover {
-        }
-
-        &::selection {
-          background: transparent;
-        }
-      }
-
-      .nav {
-        display: flex;
-        margin-left: auto;
-
-        .item {
-          font-size: 11.5px;
-          color: #444;
-          cursor: pointer;
-          flex: initial;
-          vertical-align: top;
-          text-decoration: none;
-          padding: 22px 10px 0 28px;
-          font-weight: 600;
-          display: inline-block;
-          text-align: center;
-          position: relative;
-          height: 100%;
-
-          &:hover,
-          &.active {
-            color: #222;
-
-            > svg {
-              fill: #333;
-            }
-          }
-
-          &.active:after {
-            content: " ";
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            height: 2.5px;
-            background: #64b5f6;
-            left: 0;
-            border-radius: 50px 50px 0 0;
-          }
-
-          > svg {
-            fill: #555;
-            position: absolute;
-          }
-
-          &.home,
-          &.store {
-            margin-left: 10px;
-          }
-
-          &.home svg {
-            left: 7px;
-            top: 18.2px;
-            width: 18px;
-          }
-
-          &.store svg {
-            left: 10px;
-            top: 18.9px;
-            width: 17px;
-          }
-
-          &.menu > svg {
-            width: 20px;
-            left: 15px;
-            top: 18.5px;
-            stroke-width: 0;
-            fill: #555;
-          }
-
-          &.menu:hover > svg,
-          &.menu.active > svg {
-            fill: #222;
-          }
-
-          .nav-dropdown {
-            right: 0;
-            top: 47px;
-
-            & a {
-              padding-left: 35px;
-            }
-
-            & svg {
-              fill: none;
-              stroke: #3a3d44;
-              position: absolute;
-            }
-
-            .datasources svg {
-              width: 22px;
-              left: 9px;
-              top: 5px;
-            }
-
-            .runners svg {
-              width: 20px;
-              top: 6px;
-              left: 10px;
-              fill: #484a50;
-              stroke-width: 0;
-            }
-
-            .account svg {
-              width: 19.5px;
-              left: 10.2px;
-              top: 6px;
-            }
-
-            .support svg {
-              width: 19px;
-              top: 6.5px;
-              left: 10px;
-            }
-
-            .documentation svg {
-              width: 16px;
-              top: 8px;
-              left: 11.5px;
-            }
-
-            .signout svg {
-              width: 17px;
-              top: 6.5px;
-              left: 9px;
-            }
-          }
-        }
-      }
-    }
-  </style>
-</svelte:head>
+<style src="./component.css" lang="scss"></style>
